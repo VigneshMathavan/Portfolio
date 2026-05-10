@@ -66,13 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Page transition — sweep out on load ── */
   const pageOverlay = document.getElementById('pageTransition');
-  if (pageOverlay) {
+
+  function sweepOverlayOut() {
+    if (!pageOverlay) return;
+    pageOverlay.style.pointerEvents = 'auto';
     gsap.set(pageOverlay, { transformOrigin: 'right center', scaleX: 1 });
     gsap.to(pageOverlay, {
       scaleX: 0, duration: 0.85, ease: 'expo.inOut', delay: 0.05,
       onComplete: () => { pageOverlay.style.pointerEvents = 'none'; }
     });
+  }
 
+  sweepOverlayOut();
+
+  // bfcache: re-sweep if page is restored via browser back/forward
+  window.addEventListener('pageshow', e => {
+    if (e.persisted) sweepOverlayOut();
+  });
+
+  if (pageOverlay) {
     // Sweep in when navigating away
     document.querySelectorAll('a[href]:not([href^="#"])').forEach(a => {
       a.addEventListener('click', e => {

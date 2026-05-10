@@ -411,6 +411,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  /* ── bfcache: sweep overlay out if page is restored from history ── */
+  window.addEventListener('pageshow', e => {
+    if (!e.persisted) return;
+    // Page was restored from back-forward cache — overlay is still covering screen
+    if (pageOverlay) {
+      pageOverlay.style.pointerEvents = 'auto';
+      gsap.set(pageOverlay, { transformOrigin: 'right center', scaleX: 1 });
+      gsap.to(pageOverlay, {
+        scaleX: 0,
+        duration: 0.85,
+        ease: 'expo.inOut',
+        onComplete: () => { pageOverlay.style.pointerEvents = 'none'; }
+      });
+    }
+    // Ensure preloader is hidden and body is not locked
+    const _pre = document.getElementById('preloader');
+    if (_pre) _pre.classList.add('hidden');
+    document.body.classList.remove('is-loading');
+  });
 
 
 });
