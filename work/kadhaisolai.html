@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KadhaiSolai — Mathavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script>(function(){ var t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="proj-scroll-track" id="projScrollTrack" aria-hidden="true">
+    <div class="proj-scroll-track-fill" id="projScrollFill"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-vm">VM</span>
+      <span class="nav-logo-name">mathavan</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html#contact" class="nav-cta">Let's Connect</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="proj-hero">
+    <div class="proj-hero-orb" aria-hidden="true"></div>
+    <div class="proj-hero-bg-num" aria-hidden="true">02</div>
+
+    <div class="proj-hero-topbar">
+      <span class="proj-num">02 / 04</span>
+      <div class="proj-hero-topbar-right">
+        <span class="proj-client-tag">PERSONAL PROJECT · 2025</span>
+        <span class="proj-badge proj-badge--wip">PROTOTYPE</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-body">
+      <h1 class="proj-title">Solving discovery for Tamil audiobook listeners</h1>
+      <div class="proj-hero-tags">
+        <span class="tag">PRODUCT STRATEGY</span>
+        <span class="tag">0→1</span>
+        <span class="tag">UX RESEARCH</span>
+        <span class="tag">LOVABLE</span>
+        <span class="tag">SUPABASE</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-stats">
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">0→1</div>
+        <div class="proj-hero-stat-lbl">Full product<br />lifecycle owned</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">2M+</div>
+        <div class="proj-hero-stat-lbl">Target Tamil<br />listener base</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">12+</div>
+        <div class="proj-hero-stat-lbl">User interviews<br />conducted</div>
+      </div>
+      <a href="https://kadhaisolai.lovable.app" target="_blank" rel="noopener" class="proj-hero-view-btn" aria-label="View live prototype">
+        <span class="proj-hero-view-btn-dot"></span>
+        <span class="proj-hero-view-btn-text">TRY THE PROTOTYPE</span>
+        <span class="proj-hero-view-btn-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="proj-scroll-cue" aria-hidden="true">
+      <span class="proj-scroll-line"></span>
+      <span class="proj-scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── BODY ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="overview">
+      <p class="proj-section-label">OVERVIEW</p>
+      <h2 class="proj-section-heading">Tamil audiobooks have no home</h2>
+      <div class="proj-section-body">
+        <p>Tamil is spoken by over 80 million people worldwide, yet Tamil audiobook listeners have no dedicated discovery platform. Content is scattered across YouTube, WhatsApp groups, and obscure apps — with no curation, ratings, or personalised recommendations.</p>
+        <p>KadhaiSolai ("Story Garden" in Tamil) is a focused discovery platform that helps Tamil readers find, track, and share audiobooks that matter to them.</p>
+      </div>
+      <div class="proj-callout">
+        <p class="proj-callout-label">WHY THIS PROBLEM</p>
+        <p class="proj-callout-text">"I kept recommending audiobooks to family members and each time we'd spend 20 minutes trying to find a working link. Every Tamil listener I talked to had the same story."</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── PROCESS (full-width horizontal scroll) ── -->
+  <section class="proj-section proj-section--wide" id="process">
+    <div class="proj-body-inner proj-body">
+      <p class="proj-section-label">PROCESS</p>
+      <h2 class="proj-section-heading">Building 0 to 1</h2>
+    </div>
+
+    <div class="proj-hscroll-outer">
+      <div class="proj-hscroll-track">
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">01</span>
+          <p class="proj-step-label">STEP 01</p>
+          <h3 class="proj-step-title">User Research</h3>
+          <p class="proj-step-body">Ran 12+ interviews with Tamil audiobook listeners aged 22–55 across India, UK, and UAE. Synthesised 3 core themes: broken discovery, unclear quality, and fragmented community.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">02</span>
+          <p class="proj-step-label">STEP 02</p>
+          <h3 class="proj-step-title">Product Strategy</h3>
+          <p class="proj-step-body">Mapped the competitive landscape — Audible, Storytel, Kuku FM — and identified the Tamil-language gap. Defined MVP scope: catalog discovery + ratings + listening progress tracking.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">03</span>
+          <p class="proj-step-label">STEP 03</p>
+          <h3 class="proj-step-title">PRD & Build</h3>
+          <p class="proj-step-body">Wrote the full PRD covering personas, user flows, and success metrics. Built a functional prototype using Lovable + Supabase in 3 weeks. Iterated based on 5 beta testers over 3 sprint cycles.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">04</span>
+          <p class="proj-step-label">STEP 04</p>
+          <h3 class="proj-step-title">Validation</h3>
+          <p class="proj-step-body">Ran usability sessions measuring task completion for core flows: search, save to library, rate a book. 4.2★ avg satisfaction. Identified top 3 friction points now in the next sprint backlog.</p>
+        </div>
+
+      </div>
+
+      <div class="proj-hscroll-progress" aria-hidden="true">
+        <div class="proj-hscroll-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BODY CONTINUED ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="solution">
+      <p class="proj-section-label">SOLUTION</p>
+      <div class="proj-cols">
+        <div>
+          <h2 class="proj-section-heading">KadhaiSolai — the product</h2>
+          <div class="proj-section-body">
+            <p>A web-first Tamil audiobook discovery platform with three core pillars: a curated catalog with narrator quality ratings, personal library tracking, and community recommendations.</p>
+            <p>The prototype includes user auth, Tamil-language audiobook catalog, 5-star rating system with reviews, listening progress tracking, and a recommendation feed based on listening history.</p>
+          </div>
+          <div class="proj-stack">
+            <span class="tag">LOVABLE</span>
+            <span class="tag">SUPABASE</span>
+            <span class="tag">REACT</span>
+            <span class="tag">TYPESCRIPT</span>
+            <span class="tag">TAILWIND</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://kadhaisolai.lovable.app" target="_blank" rel="noopener" class="proj-link-btn proj-link-btn--primary">TRY THE PROTOTYPE ↗</a>
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--ghost">GET IN TOUCH ↗</a>
+          </div>
+        </div>
+        <div>
+          <div class="proj-callout" style="margin-top: 0;">
+            <p class="proj-callout-label">WHAT'S NEXT</p>
+            <p class="proj-callout-text proj-callout-text--muted">Exploring partnerships with Tamil audiobook publishers for content licensing. Planning a mobile-first v2 with audio previews and offline support. Looking for a technical co-founder with React Native experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section" id="results">
+      <p class="proj-section-label">RESULTS</p>
+      <h2 class="proj-section-heading">Where we are</h2>
+
+      <div class="proj-metrics-big">
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">12+</div>
+          <div class="proj-metric-big-lbl">User interviews conducted, shaping the entire product direction and feature prioritisation</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">3 wks</div>
+          <div class="proj-metric-big-lbl">From PRD sign-off to a functional prototype deployed on Vercel and in beta testing</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">2M+</div>
+          <div class="proj-metric-big-lbl">Addressable Tamil audiobook listener market across India, Sri Lanka, and the diaspora</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">4.2★</div>
+          <div class="proj-metric-big-lbl">Average satisfaction score from beta testers across core discovery and tracking flows</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="proj-next">
+    <div>
+      <p class="proj-next-label">NEXT PROJECT</p>
+      <a href="netflix-connect.html" class="proj-next-title">Bridging the gap in shared entertainment experiences</a>
+    </div>
+    <a href="netflix-connect.html" class="proj-next-arrow" aria-label="Next project">→</a>
+  </div>
+
+  <footer class="proj-footer">
+    <span class="proj-footer-copy">© 2026 Vignesh Mathavan</span>
+    <a href="../index.html#work" class="proj-footer-back">← BACK TO WORK</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathavan — Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cherish&family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ── Preloader ── -->
+  <div id="preloader">
+    <div class="preloader-logo">VM</div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar-fill" id="preloaderFill"></div>
+    </div>
+    <span class="preloader-count" id="preloaderCount">000</span>
+  </div>
+
+  <!-- ── Nav ── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">VM</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#contact" class="nav-cta"><span>Let's Connect</span></a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Scroll Indicator ── -->
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">SCROLL</span>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <!-- Particles: flow top → bottom -->
+    <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
+
+    <div class="hero-orbs" aria-hidden="true">
+      <span class="hero-orb hero-orb--1"></span>
+      <span class="hero-orb hero-orb--2"></span>
+    </div>
+
+    <div class="hero-inner">
+      <p class="hero-tag" id="heroTag">Product Manager</p>
+
+      <div class="hero-name" id="heroName">
+        <span class="hero-firstname" id="heroFirstname">VIGNESH</span>
+        <div class="name-wrap" id="nameWrapPrimary">
+          <div class="name-line" id="heroMainLine">Mathavan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Marquee — 4 copies for seamless infinite loop ── -->
+  <div class="client-marquee-wrapper" aria-hidden="true">
+
+    <div class="marquee-row marquee-row--label">
+      <div class="marquee-track marquee-track--label">
+        <span class="marquee-label">PRODUCT THINKING</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">DATA DRIVEN</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">PROBLEM SOLVER</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">USER FIRST</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">PRODUCT THINKING</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">DATA DRIVEN</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">PROBLEM SOLVER</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">USER FIRST</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">PRODUCT THINKING</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">DATA DRIVEN</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">PROBLEM SOLVER</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">USER FIRST</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">PRODUCT THINKING</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">DATA DRIVEN</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">PROBLEM SOLVER</span><span class="marquee-diamond">◆</span>
+        <span class="marquee-label">USER FIRST</span><span class="marquee-diamond">◆</span>
+      </div>
+    </div>
+
+    <div class="marquee-row marquee-row--logos">
+      <div class="marquee-track marquee-track--logos">
+        <span class="logo-item">KADHAISOLAI</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">BATTLE PASS</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">STEAM</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">GUVI</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">CUSTOMERLABS</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">PRODUCT ROADMAP</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">KADHAISOLAI</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">BATTLE PASS</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">STEAM</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">GUVI</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">CUSTOMERLABS</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">PRODUCT ROADMAP</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">KADHAISOLAI</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">BATTLE PASS</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">STEAM</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">GUVI</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">CUSTOMERLABS</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">PRODUCT ROADMAP</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">KADHAISOLAI</span><span class="marquee-diamond">◆</span>
+        <span class="logo-item">BATTLE PASS</span><span class="marquee-diamond">◆</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Work ── -->
+  <section id="work">
+    <p class="section-eyebrow">SELECTED WORK</p>
+    <h2 class="section-heading">Work</h2>
+    <hr class="section-divider" />
+
+    <article class="project-card" onclick="location.href='work/kadhaisolai-saas.html'" style="cursor:none;">
+      <div class="project-left">
+        <div class="project-num-row">
+          <span class="project-num">01</span>
+          <div class="badge badge--wip"><span class="badge-dot badge-dot--green"></span>LIVE</div>
+        </div>
+        <p class="project-client">Personal Project · 2025</p>
+        <h3 class="project-title">Built an AI-powered Tamil audiobook SaaS from zero to live</h3>
+        <div class="project-tags">
+          <span class="tag">0→1 PRODUCT</span>
+          <span class="tag">AI / TTS</span>
+          <span class="tag">SAAS</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-val">0→1</div>
+            <div class="metric-lbl">Full product<br />lifecycle owned</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">8</div>
+            <div class="metric-lbl">AI voice<br />options</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-img project-img--kadhaisolai">
+          <a href="work/kadhaisolai-saas.html" class="project-link-arrow" aria-label="View KadhaiSolai project">↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" onclick="location.href='work/battlepass.html'" style="cursor:none;">
+      <div class="project-left">
+        <div class="project-num-row">
+          <span class="project-num">02</span>
+          <div class="badge badge--wip"><span class="badge-dot badge-dot--orange"></span>CASE STUDY</div>
+        </div>
+        <p class="project-client">Feature Analysis · 2024</p>
+        <h3 class="project-title">Dissecting battle pass mechanics to find what really drives retention</h3>
+        <div class="project-tags">
+          <span class="tag">FEATURE ANALYSIS</span>
+          <span class="tag">GAMING</span>
+          <span class="tag">MONETIZATION</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-val">Deep</div>
+            <div class="metric-lbl">Feature teardown<br />documented</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">Multi</div>
+            <div class="metric-lbl">Platform<br />analysis</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-img project-img--battlepass">
+          <a href="work/battlepass.html" class="project-link-arrow" aria-label="View Battlepass analysis">↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" onclick="location.href='work/steam-analysis.html'" style="cursor:none;">
+      <div class="project-left">
+        <div class="project-num-row">
+          <span class="project-num">03</span>
+          <div class="badge badge--wip"><span class="badge-dot badge-dot--orange"></span>CASE STUDY</div>
+        </div>
+        <p class="project-client">Competitive Research · 2024</p>
+        <h3 class="project-title">Mapping Steam's competitive position in the mobile gaming era</h3>
+        <div class="project-tags">
+          <span class="tag">COMPETITIVE ANALYSIS</span>
+          <span class="tag">GAMING</span>
+          <span class="tag">STRATEGY</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-val">5+</div>
+            <div class="metric-lbl">Competitors<br />mapped</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">Live</div>
+            <div class="metric-lbl">Interactive<br />dashboard</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-img project-img--steam">
+          <a href="work/steam-analysis.html" class="project-link-arrow" aria-label="View Steam analysis">↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" onclick="location.href='work/guvi-analysis.html'" style="cursor:none;">
+      <div class="project-left">
+        <div class="project-num-row">
+          <span class="project-num">04</span>
+          <div class="badge badge--wip"><span class="badge-dot badge-dot--orange"></span>CASE STUDY</div>
+        </div>
+        <p class="project-client">Competitive Research · 2025</p>
+        <h3 class="project-title">Competitive strategy for GUVI in India's crowded EdTech market</h3>
+        <div class="project-tags">
+          <span class="tag">COMPETITIVE ANALYSIS</span>
+          <span class="tag">EDTECH</span>
+          <span class="tag">INDIA</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-val">2026</div>
+            <div class="metric-lbl">Strategy<br />horizon</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">Live</div>
+            <div class="metric-lbl">Interactive<br />dashboard</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-img project-img--guvi">
+          <a href="work/guvi-analysis.html" class="project-link-arrow" aria-label="View GUVI analysis">↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" onclick="location.href='work/customerlabs.html'" style="cursor:none;">
+      <div class="project-left">
+        <div class="project-num-row">
+          <span class="project-num">05</span>
+          <div class="badge badge--wip"><span class="badge-dot badge-dot--orange"></span>CASE STUDY</div>
+        </div>
+        <p class="project-client">Product Research · 2024</p>
+        <h3 class="project-title">CDP market positioning deep-dive for CustomerLabs</h3>
+        <div class="project-tags">
+          <span class="tag">COMPETITIVE ANALYSIS</span>
+          <span class="tag">CDP</span>
+          <span class="tag">MARTECH</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-val">CDP</div>
+            <div class="metric-lbl">Full landscape<br />mapped</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">Live</div>
+            <div class="metric-lbl">Interactive<br />dashboard</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-img project-img--customerlabs">
+          <a href="work/customerlabs.html" class="project-link-arrow" aria-label="View CustomerLabs analysis">↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" onclick="location.href='work/product-roadmap.html'" style="cursor:none;">
+      <div class="project-left">
+        <div class="project-num-row">
+          <span class="project-num">06</span>
+          <div class="badge badge--wip"><span class="badge-dot badge-dot--green"></span>LIVE DOC</div>
+        </div>
+        <p class="project-client">Product Planning · 2025</p>
+        <h3 class="project-title">End-to-end product roadmap with prioritisation and milestone tracking</h3>
+        <div class="project-tags">
+          <span class="tag">ROADMAPPING</span>
+          <span class="tag">PRIORITISATION</span>
+          <span class="tag">PRODUCT STRATEGY</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-val">Live</div>
+            <div class="metric-lbl">Active<br />roadmap doc</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">End-to-End</div>
+            <div class="metric-lbl">From discovery<br />to delivery</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-img project-img--roadmap">
+          <a href="work/product-roadmap.html" class="project-link-arrow" aria-label="View Product Roadmap">↗</a>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <p class="section-eyebrow">MY STORY</p>
+    <h2 class="section-heading">About</h2>
+    <hr class="section-divider" />
+
+    <!-- Manifesto statement -->
+    <div class="about-manifesto">
+      <p class="about-manifesto-text">
+        <span class="manifesto-line">I turn <em class="manifesto-accent">data</em></span>
+        <span class="manifesto-line">into decisions —</span>
+        <span class="manifesto-line">and <em class="manifesto-accent">ideas</em> into products.</span>
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="about-p">
+          <strong>Three years bridging data and product.</strong> At Capgemini I built pipelines that made financial data reliable for decision-makers. Before that, I founded AV Solutions and shipped products that moved real revenue numbers for clients.
+        </p>
+        <p class="about-p">
+          <strong>My process starts with the problem,</strong> not the solution. I use data to understand what users actually need, then shape the product experience around what genuinely matters.
+        </p>
+        <p class="about-p">
+          <strong>Currently pursuing an MBA in Business Analytics</strong> at SRM — sharpening the business strategy lens alongside the technical one.
+        </p>
+        <p class="about-p">
+          Certified in product strategy, roadmapping and analytics through <strong>Product School, IBM and Product Career Academy.</strong>
+        </p>
+        <a href="mailto:vigneshmathavan72@gmail.com?subject=Resume%20Request%20%E2%80%94%20Vignesh%20Mathavan" class="btn-text">REQUEST RESUME&nbsp;↗</a>
+      </div>
+
+      <div class="about-sidebar">
+        <div class="sidebar-block">
+          <p class="sidebar-label">EXPERIENCE</p>
+          <ul class="sidebar-list">
+            <li class="sidebar-item">
+              <div><p class="sidebar-company">Capgemini</p><p class="sidebar-role">Data Analyst</p></div>
+              <span class="sidebar-years">2024 – 2025</span>
+            </li>
+            <li class="sidebar-item">
+              <div><p class="sidebar-company">AV Solutions</p><p class="sidebar-role">Founder</p></div>
+              <span class="sidebar-years">2020 – 2022</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-label">EDUCATION</p>
+          <ul class="sidebar-list">
+            <li class="sidebar-item">
+              <div><p class="sidebar-company">SRM Online</p><p class="sidebar-role">MBA, Business Analytics</p></div>
+              <span class="sidebar-years">Present</span>
+            </li>
+            <li class="sidebar-item">
+              <div><p class="sidebar-company">Chennai Inst. of Technology</p><p class="sidebar-role">B.Tech, Information Technology</p></div>
+              <span class="sidebar-years">GPA 9.2 · 2023</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-label">CERTIFICATIONS</p>
+          <ul class="sidebar-list">
+            <li class="sidebar-item">
+              <div><p class="sidebar-company">Product Warrior</p><p class="sidebar-role">Product Career Academy</p></div>
+              <span class="sidebar-years">Jun 2024</span>
+            </li>
+            <li class="sidebar-item">
+              <div><p class="sidebar-company">Product Management Intro</p><p class="sidebar-role">IBM</p></div>
+              <span class="sidebar-years">Apr 2024</span>
+            </li>
+            <li class="sidebar-item">
+              <div><p class="sidebar-company">PAC™ · PRC™ · PSC™</p><p class="sidebar-role">Product School</p></div>
+              <span class="sidebar-years">Apr 2024</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-label">SKILLS</p>
+          <div class="skill-cloud">
+            <span class="skill-pill">Roadmapping</span>
+            <span class="skill-pill">Competitive Analysis</span>
+            <span class="skill-pill">User Research</span>
+            <span class="skill-pill">Persona Mapping</span>
+            <span class="skill-pill">Product Metrics</span>
+            <span class="skill-pill">Agile / Scrum</span>
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">Databricks</span>
+            <span class="skill-pill">Oracle SQL</span>
+            <span class="skill-pill">Data Integration</span>
+            <span class="skill-pill">Cross-functional</span>
+            <span class="skill-pill">Product Strategy</span>
+            <span class="skill-pill">A/B Testing</span>
+            <span class="skill-pill">Java</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <p class="section-eyebrow">GET IN TOUCH</p>
+    <a href="mailto:vigneshmathavan72@gmail.com" class="contact-cta">
+      <span class="contact-line">Say hi!</span>
+      <span class="contact-line">Let's build&thinsp;<span class="contact-arrow">↗</span></span>
+    </a>
+    <div class="contact-footer">
+      <div class="contact-info">
+        <p class="contact-email">vigneshmathavan72@gmail.com</p>
+        <p class="contact-location">Chennai, India · +91 88708 47889</p>
+      </div>
+      <nav class="contact-social">
+        <a href="mailto:vigneshmathavan72@gmail.com" class="contact-social-link">EMAIL</a>
+        <a href="https://linkedin.com/in/vigneshmathavan" target="_blank" rel="noopener" class="contact-social-link">LINKEDIN</a>
+        <a href="https://github.com/VigneshMathavan" target="_blank" rel="noopener" class="contact-social-link">GITHUB</a>
+      </nav>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Vignesh Mathavan · Product Manager</p>
+    <p class="footer-made">Made with <span>♥</span> in Chennai</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

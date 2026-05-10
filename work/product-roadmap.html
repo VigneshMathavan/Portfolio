@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Roadmap — Mathavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script>(function(){ var t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="proj-scroll-track" id="projScrollTrack" aria-hidden="true">
+    <div class="proj-scroll-track-fill" id="projScrollFill"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">VM</a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html#contact" class="nav-cta"><span>Let's Connect</span></a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="proj-hero">
+    <div class="proj-hero-orb" aria-hidden="true"></div>
+    <div class="proj-hero-bg-num" aria-hidden="true">06</div>
+
+    <div class="proj-hero-topbar">
+      <span class="proj-num">06 / 06</span>
+      <div class="proj-hero-topbar-right">
+        <span class="proj-client-tag">PRODUCT PLANNING · 2025</span>
+        <span class="proj-badge">LIVE DOC</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-body">
+      <h1 class="proj-title">End-to-end product roadmap with prioritisation and milestone tracking</h1>
+      <div class="proj-hero-tags">
+        <span class="tag">ROADMAPPING</span>
+        <span class="tag">PRIORITISATION</span>
+        <span class="tag">PRODUCT STRATEGY</span>
+        <span class="tag">MILESTONE PLANNING</span>
+        <span class="tag">EXECUTION</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-stats">
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Live</div>
+        <div class="proj-hero-stat-lbl">Active<br />roadmap doc</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">End-to-End</div>
+        <div class="proj-hero-stat-lbl">Discovery to<br />delivery</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Prioritised</div>
+        <div class="proj-hero-stat-lbl">Framework-driven<br />decisions</div>
+      </div>
+      <a href="https://docs.google.com/spreadsheets/d/1sodWwFE0D0F70gw6u4Fkr4AZknyqXh8WBcRlkdgirBo/edit?gid=0#gid=0" target="_blank" rel="noopener" class="proj-hero-view-btn" aria-label="View the live roadmap">
+        <span class="proj-hero-view-btn-dot"></span>
+        <span class="proj-hero-view-btn-text">VIEW THE ROADMAP</span>
+        <span class="proj-hero-view-btn-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="proj-scroll-cue" aria-hidden="true">
+      <span class="proj-scroll-line"></span>
+      <span class="proj-scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── BODY ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="overview">
+      <p class="proj-section-label">OVERVIEW</p>
+      <h2 class="proj-section-heading">A roadmap is a prioritisation argument, not a release calendar</h2>
+      <div class="proj-section-body">
+        <p>Most roadmaps are timelines with feature names. This one is different — it's a living document that captures the reasoning behind every prioritisation decision, connecting user problems to product bets to measurable milestones. The goal is to show not just what gets built, but why it gets built in that order.</p>
+        <p>The roadmap covers the full product lifecycle from discovery to delivery — including problem statements, user research inputs, feature hypotheses, success metrics, effort estimates, and dependency mapping. It's structured for both strategic alignment conversations with stakeholders and sprint planning with engineering.</p>
+      </div>
+      <div class="proj-callout">
+        <p class="proj-callout-label">THE PRINCIPLE</p>
+        <p class="proj-callout-text">"A good roadmap answers 'why this, why now, and what will we learn from it.' A list of features with dates doesn't. The difference is the prioritisation framework and the courage to say no."</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── PROCESS ── -->
+  <section class="proj-section proj-section--wide" id="process">
+    <div class="proj-body-inner proj-body">
+      <p class="proj-section-label">STRUCTURE</p>
+      <h2 class="proj-section-heading">How the roadmap is organised</h2>
+    </div>
+
+    <div class="proj-hscroll-outer">
+      <div class="proj-hscroll-track">
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">01</span>
+          <p class="proj-step-label">LAYER 01</p>
+          <h3 class="proj-step-title">Discovery & Problem Definition</h3>
+          <p class="proj-step-body">Each roadmap item begins with a problem statement — who has this problem, how often, and what's the cost of not solving it. User research inputs, interview findings, and supporting data are directly linked so any stakeholder can trace a feature back to its user evidence.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">02</span>
+          <p class="proj-step-label">LAYER 02</p>
+          <h3 class="proj-step-title">Prioritisation Framework</h3>
+          <p class="proj-step-body">Features are scored using a structured prioritisation framework — weighing user impact, strategic alignment, technical effort, and time sensitivity. The scoring is transparent and auditable so teams can challenge assumptions rather than just accepting the output. Trade-offs are documented explicitly.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">03</span>
+          <p class="proj-step-label">LAYER 03</p>
+          <h3 class="proj-step-title">Milestone Planning</h3>
+          <p class="proj-step-body">Prioritised features are mapped to milestones — not arbitrary sprints but meaningful product moments: MVP, public beta, v1.0, monetisation launch, etc. Dependencies are mapped so engineering and design teams know what has to ship before what.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">04</span>
+          <p class="proj-step-label">LAYER 04</p>
+          <h3 class="proj-step-title">Success Metrics</h3>
+          <p class="proj-step-body">Every milestone has a defined success metric — what does "done" actually mean in measurable terms. Metrics are leading indicators where possible (user activation, task completion rates) rather than lagging outputs (revenue). The roadmap is a live doc: metrics are updated as data comes in.</p>
+        </div>
+
+      </div>
+
+      <div class="proj-hscroll-progress" aria-hidden="true">
+        <div class="proj-hscroll-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="solution">
+      <p class="proj-section-label">WHAT'S IN THE DOC</p>
+      <div class="proj-cols">
+        <div>
+          <h2 class="proj-section-heading">The live Google Sheets roadmap</h2>
+          <div class="proj-section-body">
+            <p><strong style="color:var(--text);">Problem Backlog</strong> — User problems ranked by frequency, severity, and strategic fit. Every item traces back to user evidence, not stakeholder opinions.</p>
+            <p><strong style="color:var(--text);">Prioritisation Scoring</strong> — Structured framework applied consistently across all features — impact, effort, alignment, and time sensitivity. The reasoning is visible, not just the ranking.</p>
+            <p><strong style="color:var(--text);">Milestone Map</strong> — Features sequenced against meaningful product milestones with dependency tracking and success metrics defined for each phase.</p>
+          </div>
+          <div class="proj-links">
+            <a href="https://docs.google.com/spreadsheets/d/1sodWwFE0D0F70gw6u4Fkr4AZknyqXh8WBcRlkdgirBo/edit?gid=0#gid=0" target="_blank" rel="noopener" class="proj-link-btn proj-link-btn--primary">OPEN THE ROADMAP ↗</a>
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--ghost">DISCUSS THIS WORK ↗</a>
+          </div>
+        </div>
+        <div>
+          <div class="proj-callout" style="margin-top: 0;">
+            <p class="proj-callout-label">SKILLS DEMONSTRATED</p>
+            <p class="proj-callout-text proj-callout-text--muted">Product roadmapping · Feature prioritisation · Milestone planning · Dependency mapping · Success metric definition · Stakeholder communication · Discovery-to-delivery thinking · Living documentation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section" id="results">
+      <p class="proj-section-label">WHAT IT SHOWS</p>
+      <h2 class="proj-section-heading">What a recruiter sees in this document</h2>
+
+      <div class="proj-metrics-big">
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Why</div>
+          <div class="proj-metric-big-lbl">Every feature is traceable back to a user problem and a prioritisation rationale — not just a date on a timeline</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Now</div>
+          <div class="proj-metric-big-lbl">Sequencing logic is explicit — why this milestone before that one, and what dependencies made that the right call</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">How</div>
+          <div class="proj-metric-big-lbl">Success metrics defined before build — showing a measurement mindset baked into planning, not retrofitted after launch</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Live</div>
+          <div class="proj-metric-big-lbl">Active document — not a polished slide deck but a working PM artefact built to be used across discovery, planning, and delivery</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="proj-next">
+    <div>
+      <p class="proj-next-label">BACK TO THE START</p>
+      <a href="kadhaisolai-saas.html" class="proj-next-title">Built an AI-powered Tamil audiobook SaaS from zero to live</a>
+    </div>
+    <a href="kadhaisolai-saas.html" class="proj-next-arrow" aria-label="First project">→</a>
+  </div>
+
+  <footer class="proj-footer">
+    <span class="proj-footer-copy">© 2026 Vignesh Mathavan</span>
+    <a href="../index.html#work" class="proj-footer-back">← BACK TO WORK</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

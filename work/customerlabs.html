@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CustomerLabs Competitive Analysis — Mathavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script>(function(){ var t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="proj-scroll-track" id="projScrollTrack" aria-hidden="true">
+    <div class="proj-scroll-track-fill" id="projScrollFill"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">VM</a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html#contact" class="nav-cta"><span>Let's Connect</span></a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="proj-hero">
+    <div class="proj-hero-orb" aria-hidden="true"></div>
+    <div class="proj-hero-bg-num" aria-hidden="true">05</div>
+
+    <div class="proj-hero-topbar">
+      <span class="proj-num">05 / 06</span>
+      <div class="proj-hero-topbar-right">
+        <span class="proj-client-tag">PRODUCT RESEARCH · 2024</span>
+        <span class="proj-badge proj-badge--wip">CASE STUDY</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-body">
+      <h1 class="proj-title">CDP market positioning deep-dive for CustomerLabs</h1>
+      <div class="proj-hero-tags">
+        <span class="tag">COMPETITIVE ANALYSIS</span>
+        <span class="tag">CDP</span>
+        <span class="tag">MARTECH</span>
+        <span class="tag">MARKET RESEARCH</span>
+        <span class="tag">POSITIONING</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-stats">
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">CDP</div>
+        <div class="proj-hero-stat-lbl">Full landscape<br />mapped</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">MarTech</div>
+        <div class="proj-hero-stat-lbl">Market<br />deep-dive</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Interactive</div>
+        <div class="proj-hero-stat-lbl">Live<br />dashboard</div>
+      </div>
+      <a href="https://customerlabs-competitiveanalysis.lovable.app" target="_blank" rel="noopener" class="proj-hero-view-btn" aria-label="View the full analysis">
+        <span class="proj-hero-view-btn-dot"></span>
+        <span class="proj-hero-view-btn-text">VIEW FULL ANALYSIS</span>
+        <span class="proj-hero-view-btn-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="proj-scroll-cue" aria-hidden="true">
+      <span class="proj-scroll-line"></span>
+      <span class="proj-scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── BODY ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="overview">
+      <p class="proj-section-label">OVERVIEW</p>
+      <h2 class="proj-section-heading">The CDP market is growing fast — and getting harder to differentiate in</h2>
+      <div class="proj-section-body">
+        <p>CustomerLabs is a no-code Customer Data Platform (CDP) that helps marketers connect first-party data to ad platforms without relying on engineers. As cookie deprecation and iOS tracking changes force brands to rethink their data infrastructure, CDPs have moved from a nice-to-have to a core stack component.</p>
+        <p>But the CDP market has exploded — Segment (Twilio), mParticle, Rudderstack, Adobe Real-Time CDP, and a growing tier of newer players are all competing for the same marketing budget. This competitive analysis maps where CustomerLabs sits in this landscape and what positioning moves are available to it.</p>
+      </div>
+      <div class="proj-callout">
+        <p class="proj-callout-label">THE MARKET CONTEXT</p>
+        <p class="proj-callout-text">"First-party data is now the most valuable asset a brand can own. Every CDP is selling that promise. CustomerLabs' edge is removing the engineering bottleneck — but the question is whether that's a lasting moat or a feature gap competitors will close."</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── PROCESS ── -->
+  <section class="proj-section proj-section--wide" id="process">
+    <div class="proj-body-inner proj-body">
+      <p class="proj-section-label">PROCESS</p>
+      <h2 class="proj-section-heading">How the CDP landscape was mapped</h2>
+    </div>
+
+    <div class="proj-hscroll-outer">
+      <div class="proj-hscroll-track">
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">01</span>
+          <p class="proj-step-label">STEP 01</p>
+          <h3 class="proj-step-title">CDP Market Scoping</h3>
+          <p class="proj-step-body">Defined the CDP category — distinguishing between composable CDPs, packaged CDPs, and data warehouse-native approaches. Identified key competitors including Segment (Twilio), mParticle, Rudderstack, Adobe Real-Time CDP, Bloomreach, and newer entrants targeting similar SMB and mid-market buyers.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">02</span>
+          <p class="proj-step-label">STEP 02</p>
+          <h3 class="proj-step-title">Feature & Positioning Audit</h3>
+          <p class="proj-step-body">Audited each competitor across: data collection and unification capabilities, identity resolution, audience segmentation, integration breadth (ad platforms, CRMs, analytics tools), technical skill required, pricing model (seat-based vs. event-based), and ideal customer profile (ICP). Mapped each to the buyer journey.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">03</span>
+          <p class="proj-step-label">STEP 03</p>
+          <h3 class="proj-step-title">ICP & Segment Analysis</h3>
+          <p class="proj-step-body">Analysed which buyer segments CustomerLabs wins in vs. where it loses to competitors. Focused on the no-code and marketer-first angle — where CustomerLabs' positioning as an "engineering-free CDP" resonates most strongly and where buyers prioritise raw technical capability instead.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">04</span>
+          <p class="proj-step-label">STEP 04</p>
+          <h3 class="proj-step-title">Positioning Recommendations</h3>
+          <p class="proj-step-body">Synthesised findings into a positioning map and strategic recommendations — where CustomerLabs should double down, which segments to pursue, and which competitive narratives to own. Dashboard format allows interactive exploration of the full competitive data.</p>
+        </div>
+
+      </div>
+
+      <div class="proj-hscroll-progress" aria-hidden="true">
+        <div class="proj-hscroll-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="solution">
+      <p class="proj-section-label">WHAT'S INSIDE</p>
+      <div class="proj-cols">
+        <div>
+          <h2 class="proj-section-heading">The interactive CDP dashboard</h2>
+          <div class="proj-section-body">
+            <p><strong style="color:var(--text);">CDP Competitor Matrix</strong> — Structured comparison of CustomerLabs vs. Segment, mParticle, Rudderstack, and others across capability, pricing, ICP fit, and technical requirements.</p>
+            <p><strong style="color:var(--text);">Positioning Map</strong> — Visual plot of where each CDP sits on key axes — no-code vs. technical depth, SMB vs. enterprise focus — showing CustomerLabs' white space.</p>
+            <p><strong style="color:var(--text);">Strategic Recommendations</strong> — Where CustomerLabs should invest to defend its position and what narratives it should own. Full findings in the interactive prototype.</p>
+          </div>
+          <div class="proj-links">
+            <a href="https://customerlabs-competitiveanalysis.lovable.app" target="_blank" rel="noopener" class="proj-link-btn proj-link-btn--primary">EXPLORE THE ANALYSIS ↗</a>
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--ghost">DISCUSS THIS WORK ↗</a>
+          </div>
+        </div>
+        <div>
+          <div class="proj-callout" style="margin-top: 0;">
+            <p class="proj-callout-label">SKILLS DEMONSTRATED</p>
+            <p class="proj-callout-text proj-callout-text--muted">CDP / MarTech landscape analysis · ICP segmentation · Positioning strategy · Competitor feature benchmarking · Market sizing · B2B SaaS research · Interactive dashboard delivery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section" id="results">
+      <p class="proj-section-label">DELIVERABLES</p>
+      <h2 class="proj-section-heading">What the analysis covers</h2>
+
+      <div class="proj-metrics-big">
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">CDP</div>
+          <div class="proj-metric-big-lbl">Full competitive landscape covering composable, packaged, and warehouse-native CDP approaches</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Matrix</div>
+          <div class="proj-metric-big-lbl">Feature comparison across capability, pricing model, ICP fit, and technical skill required — per competitor</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">ICP</div>
+          <div class="proj-metric-big-lbl">Segment analysis identifying which buyer profiles CustomerLabs wins and where it loses to category leaders</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Strategy</div>
+          <div class="proj-metric-big-lbl">Positioning recommendations with specific narrative angles and segment priorities — not generic best practices</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="proj-next">
+    <div>
+      <p class="proj-next-label">NEXT PROJECT</p>
+      <a href="product-roadmap.html" class="proj-next-title">End-to-end product roadmap with prioritisation and milestone tracking</a>
+    </div>
+    <a href="product-roadmap.html" class="proj-next-arrow" aria-label="Next project">→</a>
+  </div>
+
+  <footer class="proj-footer">
+    <span class="proj-footer-copy">© 2026 Vignesh Mathavan</span>
+    <a href="../index.html#work" class="proj-footer-back">← BACK TO WORK</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

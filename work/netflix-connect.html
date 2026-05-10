@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix Connect — Mathavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script>(function(){ var t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="proj-scroll-track" id="projScrollTrack" aria-hidden="true">
+    <div class="proj-scroll-track-fill" id="projScrollFill"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-vm">VM</span>
+      <span class="nav-logo-name">mathavan</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html#contact" class="nav-cta">Let's Connect</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="proj-hero">
+    <div class="proj-hero-orb" aria-hidden="true"></div>
+    <div class="proj-hero-bg-num" aria-hidden="true">03</div>
+
+    <div class="proj-hero-topbar">
+      <span class="proj-num">03 / 04</span>
+      <div class="proj-hero-topbar-right">
+        <span class="proj-client-tag">PRODUCT CASE STUDY · 2024</span>
+        <span class="proj-badge proj-badge--wip">CASE STUDY</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-body">
+      <h1 class="proj-title">Bridging the gap in shared entertainment experiences</h1>
+      <div class="proj-hero-tags">
+        <span class="tag">PRODUCT DESIGN</span>
+        <span class="tag">UX RESEARCH</span>
+        <span class="tag">PRD</span>
+        <span class="tag">FEATURE DESIGN</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-stats">
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">PRD</div>
+        <div class="proj-hero-stat-lbl">Feature fully<br />documented</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">3</div>
+        <div class="proj-hero-stat-lbl">Core user<br />journeys mapped</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">238M+</div>
+        <div class="proj-hero-stat-lbl">Netflix subscribers<br />as target market</div>
+      </div>
+      <a href="../index.html#contact" class="proj-hero-view-btn" aria-label="Read the PRD">
+        <span class="proj-hero-view-btn-dot"></span>
+        <span class="proj-hero-view-btn-text">DEEP DIVE THE PRD</span>
+        <span class="proj-hero-view-btn-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="proj-scroll-cue" aria-hidden="true">
+      <span class="proj-scroll-line"></span>
+      <span class="proj-scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── BODY ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="overview">
+      <p class="proj-section-label">OVERVIEW</p>
+      <h2 class="proj-section-heading">The loneliness of watching alone</h2>
+      <div class="proj-section-body">
+        <p>Netflix has 238M+ subscribers — but watching is still a fundamentally solo experience. Netflix Party (Teleparty) showed demand for shared viewing, yet it required a Chrome extension and felt like a workaround, not a feature.</p>
+        <p>Netflix Connect is a product case study exploring what a native co-watching and social entertainment layer inside Netflix could look like — designed to drive session frequency, retention, and the social proof that fuels content discovery.</p>
+      </div>
+      <div class="proj-callout">
+        <p class="proj-callout-label">THE OPPORTUNITY</p>
+        <p class="proj-callout-text">"42% of Netflix subscribers regularly discuss shows with friends after watching. The conversation happens — just nowhere near Netflix's product. What if it happened inside it?"</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── PROCESS (full-width horizontal scroll) ── -->
+  <section class="proj-section proj-section--wide" id="process">
+    <div class="proj-body-inner proj-body">
+      <p class="proj-section-label">PROCESS</p>
+      <h2 class="proj-section-heading">From research to PRD</h2>
+    </div>
+
+    <div class="proj-hscroll-outer">
+      <div class="proj-hscroll-track">
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">01</span>
+          <p class="proj-step-label">STEP 01</p>
+          <h3 class="proj-step-title">Research</h3>
+          <p class="proj-step-body">Conducted secondary research across Netflix earnings calls, Teleparty data, and published UX studies. Ran 8 user interviews with 18–34 Netflix users. Identified 3 consistent behavioural patterns.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">02</span>
+          <p class="proj-step-label">STEP 02</p>
+          <h3 class="proj-step-title">Persona Definition</h3>
+          <p class="proj-step-body">Defined 3 primary personas: the Long-Distance Pair (couples/family separated by geography), the Friend Group Binge-Watcher, and the Solo Recommender who shares but doesn't co-watch.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">03</span>
+          <p class="proj-step-label">STEP 03</p>
+          <h3 class="proj-step-title">Feature Scoping</h3>
+          <p class="proj-step-body">Prioritised the MVP feature set using RICE scoring across 12 candidate features. Top features: Watch Party scheduling, spoiler-safe episode reactions, and a Friends Activity feed on the homepage.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">04</span>
+          <p class="proj-step-label">STEP 04</p>
+          <h3 class="proj-step-title">PRD Writing</h3>
+          <p class="proj-step-body">Produced a full PRD covering problem statement, success metrics (DAU on social features, referral-driven sign-ups), technical requirements, edge cases, and open questions for engineering.</p>
+        </div>
+
+      </div>
+
+      <div class="proj-hscroll-progress" aria-hidden="true">
+        <div class="proj-hscroll-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BODY CONTINUED ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="solution">
+      <p class="proj-section-label">SOLUTION</p>
+      <div class="proj-cols">
+        <div>
+          <h2 class="proj-section-heading">Netflix Connect — feature set</h2>
+          <div class="proj-section-body">
+            <p><strong style="color:var(--text);">Watch Party Scheduler</strong> — Create a session, invite friends by Netflix ID, choose a date/time. Netflix handles synchronised playback and sends calendar invites.</p>
+            <p><strong style="color:var(--text);">Episode Reactions</strong> — Emoji + short text reactions attached to specific episode timestamps. Spoiler-gated until the viewer reaches that moment.</p>
+            <p><strong style="color:var(--text);">Friends Activity Feed</strong> — A dedicated tab showing what friends are watching, finished, and rating. Passive discovery surface driven by social proof.</p>
+          </div>
+        </div>
+        <div>
+          <div class="proj-callout" style="margin-top: 0;">
+            <p class="proj-callout-label">SUCCESS METRICS</p>
+            <p class="proj-callout-text proj-callout-text--muted">Primary: Weekly active users on social features (target 8% MAU within 6 months). Secondary: Session frequency for Watch Party users (+15% target). Guardrail: No increase in privacy-related support tickets.</p>
+          </div>
+          <div class="proj-links">
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--primary">REQUEST THE PRD ↗</a>
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--ghost">DISCUSS THE CONCEPT ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section" id="results">
+      <p class="proj-section-label">DELIVERABLES</p>
+      <h2 class="proj-section-heading">What's in the case study</h2>
+
+      <div class="proj-metrics-big">
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">1</div>
+          <div class="proj-metric-big-lbl">Full PRD covering all three features, success metrics, technical constraints, and open questions</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">3</div>
+          <div class="proj-metric-big-lbl">Detailed user personas with behavioural profiles, pain point mapping, and job-to-be-done analysis</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">3</div>
+          <div class="proj-metric-big-lbl">End-to-end user journey maps covering Watch Party, Episode Reactions, and Friends Activity flows</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">RICE</div>
+          <div class="proj-metric-big-lbl">Feature prioritisation framework applied across 12 candidate features with explicit scoring rationale</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="proj-next">
+    <div>
+      <p class="proj-next-label">NEXT PROJECT</p>
+      <a href="av-solutions.html" class="proj-next-title">Built a web dev startup that moved revenue needles for clients</a>
+    </div>
+    <a href="av-solutions.html" class="proj-next-arrow" aria-label="Next project">→</a>
+  </div>
+
+  <footer class="proj-footer">
+    <span class="proj-footer-copy">© 2026 Vignesh Mathavan</span>
+    <a href="../index.html#work" class="proj-footer-back">← BACK TO WORK</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KadhaiSolai SaaS — Mathavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script>(function(){ var t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="proj-scroll-track" id="projScrollTrack" aria-hidden="true">
+    <div class="proj-scroll-track-fill" id="projScrollFill"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">VM</a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html#contact" class="nav-cta"><span>Let's Connect</span></a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="proj-hero">
+    <div class="proj-hero-orb" aria-hidden="true"></div>
+    <div class="proj-hero-bg-num" aria-hidden="true">01</div>
+
+    <div class="proj-hero-topbar">
+      <span class="proj-num">01 / 06</span>
+      <div class="proj-hero-topbar-right">
+        <span class="proj-client-tag">PERSONAL PROJECT · 2025</span>
+        <span class="proj-badge">0→1 SAAS</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-body">
+      <h1 class="proj-title">Built an AI-powered Tamil audiobook SaaS from zero to live</h1>
+      <div class="proj-hero-tags">
+        <span class="tag">0→1 PRODUCT</span>
+        <span class="tag">AI / TTS</span>
+        <span class="tag">SAAS</span>
+        <span class="tag">PRODUCT STRATEGY</span>
+        <span class="tag">UX RESEARCH</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-stats">
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">0→1</div>
+        <div class="proj-hero-stat-lbl">Full product<br />lifecycle owned</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">8</div>
+        <div class="proj-hero-stat-lbl">AI voice<br />options</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Free</div>
+        <div class="proj-hero-stat-lbl">No credit card<br />to start</div>
+      </div>
+      <a href="https://kadhaisolai-saas.vercel.app" target="_blank" rel="noopener" class="proj-hero-view-btn" aria-label="Try the live product">
+        <span class="proj-hero-view-btn-dot"></span>
+        <span class="proj-hero-view-btn-text">TRY THE PRODUCT</span>
+        <span class="proj-hero-view-btn-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="proj-scroll-cue" aria-hidden="true">
+      <span class="proj-scroll-line"></span>
+      <span class="proj-scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── BODY ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="overview">
+      <p class="proj-section-label">OVERVIEW</p>
+      <h2 class="proj-section-heading">Tamil has 80M+ speakers. Zero audiobook platforms.</h2>
+      <div class="proj-section-body">
+        <p>Tamil is spoken by over 80 million people worldwide — yet Tamil audiobook listeners have no dedicated platform. Content is scattered across YouTube, WhatsApp forwards, and obscure apps with no curation, no quality signal, and no discovery layer.</p>
+        <p>KadhaiSolai ("Story Garden" in Tamil) flips the production problem entirely: authors upload their Tamil text, and the platform converts it into a narrated audiobook using Sarvam AI's Bulbul v3 engine — the most natural-sounding Tamil TTS available — in under 20 minutes. No studio. No microphone. No technical knowledge required.</p>
+      </div>
+      <div class="proj-callout">
+        <p class="proj-callout-label">THE INSIGHT</p>
+        <p class="proj-callout-text">"The bottleneck wasn't readership — it was production. Every Tamil author I spoke to wanted to reach audio audiences but couldn't afford a studio. AI narration removes that barrier entirely."</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── PROCESS ── -->
+  <section class="proj-section proj-section--wide" id="process">
+    <div class="proj-body-inner proj-body">
+      <p class="proj-section-label">PROCESS</p>
+      <h2 class="proj-section-heading">From problem to live product</h2>
+    </div>
+
+    <div class="proj-hscroll-outer">
+      <div class="proj-hscroll-track">
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">01</span>
+          <p class="proj-step-label">STEP 01</p>
+          <h3 class="proj-step-title">User Research</h3>
+          <p class="proj-step-body">Conducted 12+ interviews with Tamil audiobook listeners (ages 22–55) across India, UK, and UAE. Three themes dominated: broken discovery, no quality signal, and fragmented community. The supply side — Tamil authors — showed a clear willingness to produce if the barrier was low enough.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">02</span>
+          <p class="proj-step-label">STEP 02</p>
+          <h3 class="proj-step-title">Product Strategy</h3>
+          <p class="proj-step-body">Mapped the competitive landscape — Audible, Storytel, Kuku FM — and identified the Tamil-language gap. Chose AI narration over a marketplace model because it eliminated the supply-side bottleneck. Defined MVP scope: text upload → AI narration → listener streaming, with author profiles and genre discovery.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">03</span>
+          <p class="proj-step-label">STEP 03</p>
+          <h3 class="proj-step-title">PRD & Build</h3>
+          <p class="proj-step-body">Wrote the full PRD covering personas, user flows, success metrics, and technical requirements around Sarvam AI's Bulbul v3 TTS engine — which supports 8 distinct Tamil voice options (Anand, Kavitha, Vijay, Shruti, Priya, Pavithra, Neel, Arvind). Built and deployed the live product on Vercel.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">04</span>
+          <p class="proj-step-label">STEP 04</p>
+          <h3 class="proj-step-title">Iteration</h3>
+          <p class="proj-step-body">Ran usability sessions measuring task completion for author upload, voice selection, and listener streaming flows. Added speed control, progress tracking, and AI-assisted story creation tools based on feedback. Writing streaks and community genre feeds were added in the second sprint cycle.</p>
+        </div>
+
+      </div>
+
+      <div class="proj-hscroll-progress" aria-hidden="true">
+        <div class="proj-hscroll-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="solution">
+      <p class="proj-section-label">SOLUTION</p>
+      <div class="proj-cols">
+        <div>
+          <h2 class="proj-section-heading">KadhaiSolai — what's live</h2>
+          <div class="proj-section-body">
+            <p><strong style="color:var(--text);">AI Narration Engine</strong> — Authors upload Tamil text files. Sarvam Bulbul v3 converts them to natural-sounding audio in under 20 minutes: short stories (~1 min), novel chapters (~3 min), full novels (~15 min).</p>
+            <p><strong style="color:var(--text);">8 Voice Options</strong> — Listeners and authors choose from Anand, Kavitha, Vijay, Shruti, Priya, Pavithra, Neel, and Arvind — covering a range of tones, genders, and reading styles.</p>
+            <p><strong style="color:var(--text);">Discovery Layer</strong> — Curated genre feeds (Drama, Thriller, Poetry), author profiles with follower tracking, and a community recommendation surface so listeners can find content without hunting for it.</p>
+          </div>
+          <div class="proj-stack">
+            <span class="tag">SARVAM AI</span>
+            <span class="tag">BULBUL V3 TTS</span>
+            <span class="tag">VERCEL</span>
+            <span class="tag">REACT</span>
+            <span class="tag">SUPABASE</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://kadhaisolai-saas.vercel.app" target="_blank" rel="noopener" class="proj-link-btn proj-link-btn--primary">EXPLORE THE PRODUCT ↗</a>
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--ghost">GET IN TOUCH ↗</a>
+          </div>
+        </div>
+        <div>
+          <div class="proj-callout" style="margin-top: 0;">
+            <p class="proj-callout-label">WHAT'S NEXT</p>
+            <p class="proj-callout-text proj-callout-text--muted">Mobile-first v2 with audio previews and offline support. Exploring publisher partnerships for licensed Tamil content. Looking for a technical co-founder with React Native experience to accelerate the roadmap.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section" id="results">
+      <p class="proj-section-label">RESULTS</p>
+      <h2 class="proj-section-heading">What the product delivers</h2>
+
+      <div class="proj-metrics-big">
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">&lt;20 min</div>
+          <div class="proj-metric-big-lbl">Time from raw Tamil text upload to a fully narrated, streamable audiobook — no studio, no equipment</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">8</div>
+          <div class="proj-metric-big-lbl">Distinct AI voice options powered by Sarvam Bulbul v3 — the most natural-sounding Tamil TTS engine available</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Free</div>
+          <div class="proj-metric-big-lbl">No credit card required to start — reducing friction for both authors and listeners in tier-2 and diaspora markets</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">0→1</div>
+          <div class="proj-metric-big-lbl">End-to-end product ownership: user research, PRD, technical build, deployment, and iterative improvement — solo</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="proj-next">
+    <div>
+      <p class="proj-next-label">NEXT PROJECT</p>
+      <a href="battlepass.html" class="proj-next-title">Dissecting battle pass mechanics to find what really drives retention</a>
+    </div>
+    <a href="battlepass.html" class="proj-next-arrow" aria-label="Next project">→</a>
+  </div>
+
+  <footer class="proj-footer">
+    <span class="proj-footer-copy">© 2026 Vignesh Mathavan</span>
+    <a href="../index.html#work" class="proj-footer-back">← BACK TO WORK</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

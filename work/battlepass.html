@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battle Pass Feature Analysis — Mathavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script>(function(){ var t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="proj-scroll-track" id="projScrollTrack" aria-hidden="true">
+    <div class="proj-scroll-track-fill" id="projScrollFill"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">VM</a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html#contact" class="nav-cta"><span>Let's Connect</span></a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="proj-hero">
+    <div class="proj-hero-orb" aria-hidden="true"></div>
+    <div class="proj-hero-bg-num" aria-hidden="true">02</div>
+
+    <div class="proj-hero-topbar">
+      <span class="proj-num">02 / 06</span>
+      <div class="proj-hero-topbar-right">
+        <span class="proj-client-tag">FEATURE ANALYSIS · 2024</span>
+        <span class="proj-badge proj-badge--wip">CASE STUDY</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-body">
+      <h1 class="proj-title">Dissecting battle pass mechanics to find what really drives retention</h1>
+      <div class="proj-hero-tags">
+        <span class="tag">FEATURE ANALYSIS</span>
+        <span class="tag">GAMING</span>
+        <span class="tag">MONETIZATION</span>
+        <span class="tag">RETENTION</span>
+        <span class="tag">USER BEHAVIOUR</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-stats">
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Feature</div>
+        <div class="proj-hero-stat-lbl">Deep-dive<br />teardown</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Multi</div>
+        <div class="proj-hero-stat-lbl">Platform<br />analysis</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Interactive</div>
+        <div class="proj-hero-stat-lbl">Live<br />dashboard</div>
+      </div>
+      <a href="https://battlepass-feature-analysis.lovable.app" target="_blank" rel="noopener" class="proj-hero-view-btn" aria-label="View the full analysis">
+        <span class="proj-hero-view-btn-dot"></span>
+        <span class="proj-hero-view-btn-text">VIEW FULL ANALYSIS</span>
+        <span class="proj-hero-view-btn-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="proj-scroll-cue" aria-hidden="true">
+      <span class="proj-scroll-line"></span>
+      <span class="proj-scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── BODY ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="overview">
+      <p class="proj-section-label">OVERVIEW</p>
+      <h2 class="proj-section-heading">The battle pass is the most influential monetisation model in gaming</h2>
+      <div class="proj-section-body">
+        <p>Since Fortnite popularised it in 2018, the battle pass has become the dominant monetisation mechanic across gaming — from Valorant and Apex Legends to Call of Duty and beyond. Yet most implementations succeed or fail on the same handful of design decisions.</p>
+        <p>This feature analysis goes beyond surface-level comparisons to understand the psychological and product mechanics that make battle passes generate consistent engagement and revenue — and where they create churn instead.</p>
+      </div>
+      <div class="proj-callout">
+        <p class="proj-callout-label">THE QUESTION</p>
+        <p class="proj-callout-text">"What separates a battle pass that players feel compelled to complete from one that they abandon by week three? The answer is in the design of progress, not the price."</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── PROCESS ── -->
+  <section class="proj-section proj-section--wide" id="process">
+    <div class="proj-body-inner proj-body">
+      <p class="proj-section-label">PROCESS</p>
+      <h2 class="proj-section-heading">How the analysis was built</h2>
+    </div>
+
+    <div class="proj-hscroll-outer">
+      <div class="proj-hscroll-track">
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">01</span>
+          <p class="proj-step-label">STEP 01</p>
+          <h3 class="proj-step-title">Feature Mapping</h3>
+          <p class="proj-step-body">Systematically catalogued the battle pass features across multiple major gaming titles — tier structures, XP gating, reward distribution, cosmetic vs functional rewards, seasonal cadence, and free-vs-paid track design. Every feature mapped to user behaviour patterns.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">02</span>
+          <p class="proj-step-label">STEP 02</p>
+          <h3 class="proj-step-title">Retention Mechanics Analysis</h3>
+          <p class="proj-step-body">Analysed how each implementation uses variable reward schedules, loss aversion (time-limited passes), social proof (visible cosmetics), and milestone spacing to drive daily active use. Cross-referenced against player sentiment data from community forums and published developer postmortems.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">03</span>
+          <p class="proj-step-label">STEP 03</p>
+          <h3 class="proj-step-title">Monetisation Teardown</h3>
+          <p class="proj-step-body">Evaluated pricing tiers, V-buck/coin top-up incentives, bundle positioning, and the economics of the "battle pass pays for itself" framing used by Fortnite and others. Identified which structural choices correlate with higher completion rates and lower churn.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">04</span>
+          <p class="proj-step-label">STEP 04</p>
+          <h3 class="proj-step-title">Recommendations</h3>
+          <p class="proj-step-body">Synthesised findings into an interactive dashboard with PM-ready recommendations: which mechanics to adopt, which to avoid, and how to sequence rewards to maximise completion without creating pay-to-win friction. Full analysis available in the live prototype.</p>
+        </div>
+
+      </div>
+
+      <div class="proj-hscroll-progress" aria-hidden="true">
+        <div class="proj-hscroll-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="solution">
+      <p class="proj-section-label">WHAT'S INSIDE</p>
+      <div class="proj-cols">
+        <div>
+          <h2 class="proj-section-heading">The interactive analysis dashboard</h2>
+          <div class="proj-section-body">
+            <p><strong style="color:var(--text);">Feature Comparison Matrix</strong> — Side-by-side breakdown of battle pass designs across major gaming titles, covering tier count, XP requirements, cosmetic distribution, and seasonal length.</p>
+            <p><strong style="color:var(--text);">Retention Mechanic Scoring</strong> — Each feature scored against engagement and monetisation impact, showing which mechanics drive completion vs. which create abandonment risk.</p>
+            <p><strong style="color:var(--text);">PM Recommendations</strong> — Actionable design principles for product teams building or iterating on battle pass systems, grounded in the analysis data.</p>
+          </div>
+          <div class="proj-links">
+            <a href="https://battlepass-feature-analysis.lovable.app" target="_blank" rel="noopener" class="proj-link-btn proj-link-btn--primary">EXPLORE THE ANALYSIS ↗</a>
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--ghost">DISCUSS THIS WORK ↗</a>
+          </div>
+        </div>
+        <div>
+          <div class="proj-callout" style="margin-top: 0;">
+            <p class="proj-callout-label">SKILLS DEMONSTRATED</p>
+            <p class="proj-callout-text proj-callout-text--muted">Feature teardown · Competitive benchmarking · User behaviour analysis · Monetisation strategy · Retention mechanics · Data-driven recommendations · Interactive prototype delivery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section" id="results">
+      <p class="proj-section-label">DELIVERABLES</p>
+      <h2 class="proj-section-heading">What's in the case study</h2>
+
+      <div class="proj-metrics-big">
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Multi</div>
+          <div class="proj-metric-big-lbl">Gaming platforms analysed across a consistent feature evaluation framework — apples-to-apples comparison</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Feature</div>
+          <div class="proj-metric-big-lbl">Matrix covering tier design, XP gating, reward psychology, pricing, and seasonal mechanics in one view</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">PM</div>
+          <div class="proj-metric-big-lbl">Ready recommendations for product teams designing or iterating on engagement and monetisation systems</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Interactive</div>
+          <div class="proj-metric-big-lbl">Live dashboard — not a static slide deck. Explore the full data and findings directly in the prototype</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="proj-next">
+    <div>
+      <p class="proj-next-label">NEXT PROJECT</p>
+      <a href="steam-analysis.html" class="proj-next-title">Mapping Steam's competitive position in the mobile gaming era</a>
+    </div>
+    <a href="steam-analysis.html" class="proj-next-arrow" aria-label="Next project">→</a>
+  </div>
+
+  <footer class="proj-footer">
+    <span class="proj-footer-copy">© 2026 Vignesh Mathavan</span>
+    <a href="../index.html#work" class="proj-footer-back">← BACK TO WORK</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>
