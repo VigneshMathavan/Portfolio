@@ -1059,13 +1059,15 @@ body.hero-passed .hero-corners { opacity: 0; pointer-events: none; }
 .about-p { font-size: 15px; line-height: 1.82; color: var(--text-muted); }
 .about-p strong { color: var(--text); font-weight: 600; }
 
-/* ── Resume button — red pill with sweep-out hover ── */
+/* ── Resume button — red pill with gradient-slide hover ── */
 .btn-text {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
   color: #fff;
-  background: var(--red);
+  background: linear-gradient(to right, var(--bg) 50%, var(--red) 50%);
+  background-size: 200% 100%;
+  background-position: right center;
   border: 1px solid var(--red);
   border-radius: 100px;
   padding: 13px 28px;
@@ -1075,26 +1077,13 @@ body.hero-passed .hero-corners { opacity: 0; pointer-events: none; }
   margin-top: 8px;
   text-decoration: none;
   width: fit-content;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.32s cubic-bezier(0.16,1,0.3,1);
+  transition: background-position 0.38s cubic-bezier(0.16,1,0.3,1),
+              color 0.38s cubic-bezier(0.16,1,0.3,1);
 }
 
-.btn-text::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--bg);
-  border-radius: inherit;
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform 0.32s cubic-bezier(0.16,1,0.3,1);
-}
-
-.btn-text:hover { color: var(--red); }
-.btn-text:hover::before {
-  transform: scaleX(1);
-  transform-origin: left center;
+.btn-text:hover {
+  background-position: left center;
+  color: var(--red);
 }
 
 .about-sidebar { display: flex; flex-direction: column; gap: 44px; }
