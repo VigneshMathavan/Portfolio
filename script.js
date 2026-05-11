@@ -116,6 +116,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  /* ── bfcache restore — browser back button from work pages ──
+     When the user navigates back, the browser restores the page
+     from bfcache with the page-transition overlay still at scaleX:1
+     (full cover) and all GSAP states frozen. pageshow fires with
+     e.persisted=true; re-sweep the overlay and replay hero reveal. */
+  window.addEventListener('pageshow', e => {
+    if (!e.persisted) return;              // normal load — already handled above
+    document.body.classList.remove('is-loading');
+
+    if (pageOverlay) {
+      gsap.killTweensOf(pageOverlay);
+      pageOverlay.style.pointerEvents = 'auto';
+      gsap.set(pageOverlay, { transformOrigin: 'right center', scaleX: 1 });
+      gsap.to(pageOverlay, {
+        scaleX: 0,
+        duration: 0.85,
+        ease: 'expo.inOut',
+        delay: 0.05,
+        onComplete: () => { pageOverlay.style.pointerEvents = 'none'; }
+      });
+    }
+
+    revealHero();
+    ScrollTrigger.refresh();
+  });
+
+
   /* ── Hero Particles — top to bottom ── */
   const canvas = document.getElementById('heroParticles');
   if (canvas) {
