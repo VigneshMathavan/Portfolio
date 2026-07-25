@@ -1,4 +1,15 @@
 /* ─────────────────────────────────────────────
+   Nagasaki — display face for the hero name
+───────────────────────────────────────────── */
+@font-face {
+  font-family: 'Nagasaki';
+  src: url('assets/fonts/Nagasaki.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ─────────────────────────────────────────────
    CSS Custom Properties / Themes
 ───────────────────────────────────────────── */
 :root {
@@ -1943,7 +1954,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
   gap: clamp(32px, 5vw, 88px);
   align-items: center;
   width: 100%;
-  padding: clamp(12px, 2.4vh, 40px) 0;
+  padding: clamp(6px, 1.2vh, 22px) 0;
 }
 
 .hero-left {
@@ -2000,17 +2011,19 @@ footer p { font-size: 12px; color: var(--text-muted); }
 }
 
 /* ── Mathavan — the showpiece ──
-   Instrument Serif: a high-contrast editorial serif with true lowercase, so
-   the name is set normally in mixed case. */
+   Nagasaki: an ultra-condensed heavy display face with true lowercase.
+   Because it is so narrow (width ≈ 2.03 × font-size) it needs positive
+   tracking to stay legible, and it is sized by height rather than by
+   filling the column — filling the width would make it absurdly tall. */
 .name-wrap { overflow: hidden; padding-bottom: 0.06em; }
 
 .name-line {
-  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
-  font-size: min(15vw, 220px);            /* fallback for no container queries */
-  font-size: min(28.3cqw, 220px);         /* 28.3 × 3.36 ≈ 95% of the column   */
+  font-family: 'Nagasaki', 'Instrument Serif', Georgia, serif;
+  font-size: min(14.5vw, 208px);          /* fallback for no container queries */
+  font-size: min(26.5cqw, 208px);
   font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.012em;
+  line-height: 1;
+  letter-spacing: 0.055em;
   white-space: nowrap;
   display: flex;
   align-items: baseline;
@@ -2024,22 +2037,18 @@ footer p { font-size: 12px; color: var(--text-muted); }
   opacity: 1;
 }
 
+/* Solid fill — the vertical gradient read as a muddy metallic sheen on
+   letterforms this heavy. */
 .nl-char {
   display: inline-block;
   will-change: transform;
-  background: linear-gradient(180deg, #fffcf7 0%, #f2ebe1 44%, #bdac9a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: #f4eee6;
 }
 
 [data-theme="light"] .name-line { filter: drop-shadow(0 6px 34px rgba(0,0,0,0.14)); }
-[data-theme="light"] .nl-char {
-  background: linear-gradient(180deg, #1a1a1a 0%, #0c0c0c 50%, #3a3128 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+[data-theme="light"] .nl-char { color: #14110e; }
 
 /* ── tagline / ctas ── */
 .hero-tagline {
