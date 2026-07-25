@@ -1939,33 +1939,37 @@ footer p { font-size: 12px; color: var(--text-muted); }
 }
 
 /* ─────────────────────────────
-   BAND 2 — name banner + lower row
+   BAND 2 — two balanced columns
 ───────────────────────────── */
 .hero-split {
   align-self: center;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 2.6vh, 42px);
-  grid-template-columns: none;
-  padding: clamp(8px, 1.6vh, 28px) 0;
+  display: grid;
+  /* minmax(0,…) so the nowrap name can never inflate its own track */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 418px);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: center;
+  width: 100%;
+  padding: clamp(12px, 2.4vh, 40px) 0;
 }
 
-/* The name gets the full hero width */
-.hero-banner { display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
-
-/* Copy left, live card right */
-.hero-lower {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 430px);
-  gap: clamp(28px, 5vw, 80px);
-  align-items: end;
-  width: 100%;
+.hero-left {
+  /* size containment: the column's width stops depending on the name's
+     intrinsic width, which lets the name scale to the column via cqw */
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  min-width: 0;
+  /* a comfortable measure for the type — keeps the name from stranding
+     whitespace at the end of an over-wide column */
+  max-width: 780px;
 }
 
 /* ── Role line: red rule + rotating words ── */
 .hero-roleline {
   display: flex; align-items: center; gap: 14px;
-  margin-bottom: clamp(10px, 1.8vh, 20px);
+  margin-bottom: clamp(14px, 2.2vh, 28px);
   opacity: 0;
 }
 .hero-roleline-rule {
@@ -2001,19 +2005,22 @@ footer p { font-size: 12px; color: var(--text-muted); }
   padding-left: 0.35em;
 }
 
-/* ── MATHAVAN — the showpiece ── */
+/* ── Mathavan — the showpiece ──
+   Brand is a caps-only Didone (its lowercase are small caps at cap height),
+   so "Mathavan" is set as a full-size cap M followed by small caps. Reads as
+   mixed case instead of shouting, and it's a classic Didone treatment. */
 .name-wrap { overflow: hidden; padding-bottom: 0.06em; }
 
 .name-line {
   font-family: 'Brand', Georgia, serif;
-  /* nowrap + vw keeps the 8 caps filling the hero width without ever wrapping;
-     the vh term stops a wide-but-short window from overflowing the fold */
-  font-size: max(52px, min(17.4vw, 27vh, 248px));
+  font-size: min(13vw, 188px);            /* fallback for no container queries */
+  font-size: min(27.4cqw, 188px);         /* 27.4 × 3.51 ≈ 96% of the column   */
   font-weight: 400;
-  line-height: 0.94;
+  line-height: 1;
   letter-spacing: 0.005em;
   white-space: nowrap;
   display: flex;
+  align-items: baseline;                  /* keeps M and the small caps aligned */
   margin: 0;
   /* neutralise the older gradient/shadow rules — chars own their fill now */
   background: none;
@@ -2023,6 +2030,9 @@ footer p { font-size: 12px; color: var(--text-muted); }
   transform: none;
   opacity: 1;
 }
+
+.nl-cap { font-size: 1em; }
+.nl-sm  { font-size: 0.72em; }
 
 .nl-char {
   display: inline-block;
@@ -2057,13 +2067,13 @@ footer p { font-size: 12px; color: var(--text-muted); }
 
 /* ── tagline / ctas ── */
 .hero-tagline {
-  margin-top: clamp(16px, 2.4vh, 30px);
-  max-width: 30ch;
-  font-size: clamp(14px, 1.45vw, 18px);
-  line-height: 1.7;
+  margin-top: clamp(22px, 3.4vh, 44px);
+  max-width: 34ch;
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.78;
 }
 
-.hero-ctas { margin-top: clamp(20px, 2.8vh, 34px); }
+.hero-ctas { margin-top: clamp(24px, 3.6vh, 44px); }
 
 .hero-cta-primary, .hero-cta-ghost { will-change: transform; }
 
@@ -2082,7 +2092,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
 .hero-cta-ghost { position: relative; }
 .hero-cta-ghost:hover { border-color: var(--red); color: var(--red); }
 
-.hero-social { margin-top: clamp(16px, 2.2vh, 28px); }
+.hero-social { margin-top: clamp(22px, 3vh, 38px); }
 .hero-social a { position: relative; }
 .hero-social a::after {
   content: ''; position: absolute; left: 0; bottom: -4px;
@@ -2127,9 +2137,17 @@ footer p { font-size: 12px; color: var(--text-muted); }
 }
 .hero-card-tilt:hover .hvc-glare { opacity: 1; }
 
+/* Interior breathing room — the v2 paddings were tight for a 418px card */
+.hvc-header { padding: 15px 22px; }
+.hvc-chart  { padding: 20px 22px 12px; }
+.hvc-chart svg { height: 94px; }
+.hvc-stat   { padding: 15px 0 15px 18px; }
+.hvc-tags   { padding: 16px 22px; gap: 7px; }
+.hvc-footer { padding: 14px 22px; }
+
 .hvc-chart-head {
   display: flex; align-items: baseline; justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .hvc-chart-label {
   font-size: 9px; font-weight: 600; letter-spacing: 0.2em; color: var(--text-muted);
@@ -2183,13 +2201,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
   100% { transform: translateX(100%); }
 }
 
-.hero-rail-strip {
-  display: inline-flex; align-items: center; gap: 10px;
-  white-space: nowrap; overflow: hidden;
-  letter-spacing: 0.16em; opacity: 0.72;
-}
-.hero-rail-strip b { font-family: 'Unbounded', sans-serif; font-weight: 700; color: var(--text); }
-.hero-rail-strip i { color: var(--red); font-style: normal; font-size: 7px; opacity: 0.8; }
+.hero-rail-count { letter-spacing: 0.2em; opacity: 0.6; white-space: nowrap; }
 
 /* The old absolute scroll indicator duplicates the rail — retire it */
 .scroll-indicator { display: none !important; }
@@ -2197,27 +2209,26 @@ footer p { font-size: 12px; color: var(--text-muted); }
 /* ─────────────────────────────
    Responsive
 ───────────────────────────── */
-@media (max-width: 1080px) {
-  .hero-lower { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 36px; }
+@media (max-width: 1180px) {
+  .hero-split { grid-template-columns: minmax(0, 1fr) minmax(0, 330px); gap: clamp(28px, 4vw, 56px); }
   .hero-meta-mid { display: none; }
 }
 
 @media (max-width: 900px) {
-  #hero { padding-top: calc(var(--nav-height) + 12px); }
-  .hero-lower { grid-template-columns: 1fr; gap: 34px; align-items: start; }
+  #hero { padding-top: calc(var(--nav-height) + 16px); }
+  /* stack: type first, card beneath */
+  .hero-split { grid-template-columns: minmax(0, 1fr); gap: clamp(34px, 5vh, 52px); }
   .hero-right { display: flex; justify-content: flex-start; }
-  .hero-card-tilt { max-width: 100%; }
-  /* stay left-aligned on mobile — the v2 rules centred all of this */
-  .hero-left { align-items: flex-start; text-align: left; }
+  .hero-card-tilt { max-width: 420px; }
+  /* stay left-aligned — the v2 rules centred all of this */
   .hero-left .hero-name,
   .hero-name { text-align: left; }
-  .hero-tagline { max-width: 40ch; text-align: left; }
+  .hero-tagline { max-width: 42ch; text-align: left; }
   .hero-ctas { justify-content: flex-start; }
   .hero-social { justify-content: flex-start; }
-  .hero-rail-strip { display: none; }
   .hero-roles { min-width: 13em; }
-  /* name now spans the whole narrow viewport */
-  .name-line { font-size: max(46px, min(18vw, 168px)); }
+  /* single column now spans the viewport, so it can take a larger cap */
+  .name-line { font-size: min(24cqw, 190px); }
 }
 
 @media (max-width: 600px) {
@@ -2226,7 +2237,8 @@ footer p { font-size: 12px; color: var(--text-muted); }
   .hero-meta-clock b { min-width: 7.6em; }
   .hero-firstname { letter-spacing: 0.34em; }
   .hero-rail { font-size: 9px; }
-  .name-line { font-size: 17.8vw; }
+  .hero-rail-count { display: none; }
+  .name-line { font-size: min(24.4cqw, 130px); }
 }
 
 @media (max-width: 400px) {
