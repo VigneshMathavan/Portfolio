@@ -1,16 +1,4 @@
 /* ─────────────────────────────────────────────
-   Brand — signature face for the hero name
-───────────────────────────────────────────── */
-@font-face {
-  font-family: 'Brand';
-  src: url('assets/fonts/Brand.woff') format('woff'),
-       url('assets/fonts/Brand.ttf')  format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-}
-
-/* ─────────────────────────────────────────────
    CSS Custom Properties / Themes
 ───────────────────────────────────────────── */
 :root {
@@ -542,13 +530,12 @@ body.cursor-hidden .cursor-ring { opacity: 0; }
 /* The name wrap clips the slide-in */
 .name-wrap { overflow: hidden; }
 
-/* Mathavan — Brand, signature face */
+/* Mathavan — base sizing; the hero v3 block below owns the final treatment */
 .name-line {
-  font-family: 'Brand', 'Cherish', cursive;
+  font-family: 'Instrument Serif', Georgia, serif;
   font-weight: 400;
   font-size: clamp(60px, 11vw, 160px);
   line-height: 1.05;
-  letter-spacing: 0.03em;
   color: var(--text);
   display: block;
   transform: translateY(110%);
@@ -2013,21 +2000,20 @@ footer p { font-size: 12px; color: var(--text-muted); }
 }
 
 /* ── Mathavan — the showpiece ──
-   Brand is a caps-only Didone (its lowercase are small caps at cap height),
-   so "Mathavan" is set as a full-size cap M followed by small caps. Reads as
-   mixed case instead of shouting, and it's a classic Didone treatment. */
+   Instrument Serif: a high-contrast editorial serif with true lowercase, so
+   the name is set normally in mixed case. */
 .name-wrap { overflow: hidden; padding-bottom: 0.06em; }
 
 .name-line {
-  font-family: 'Brand', Georgia, serif;
-  font-size: min(13vw, 188px);            /* fallback for no container queries */
-  font-size: min(27.4cqw, 188px);         /* 27.4 × 3.51 ≈ 96% of the column   */
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  font-size: min(15vw, 220px);            /* fallback for no container queries */
+  font-size: min(28.3cqw, 220px);         /* 28.3 × 3.36 ≈ 95% of the column   */
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.005em;
+  line-height: 1.02;
+  letter-spacing: -0.012em;
   white-space: nowrap;
   display: flex;
-  align-items: baseline;                  /* keeps M and the small caps aligned */
+  align-items: baseline;
   margin: 0;
   /* neutralise the older gradient/shadow rules — chars own their fill now */
   background: none;
@@ -2037,9 +2023,6 @@ footer p { font-size: 12px; color: var(--text-muted); }
   transform: none;
   opacity: 1;
 }
-
-.nl-cap { font-size: 1em; }
-.nl-sm  { font-size: 0.72em; }
 
 .nl-char {
   display: inline-block;
@@ -2119,16 +2102,6 @@ footer p { font-size: 12px; color: var(--text-muted); }
     linear-gradient(180deg, rgba(255,255,255,0.028) 0%, transparent 46%),
     var(--bg-card);
 }
-
-.hvc-glare {
-  position: absolute; inset: 0; z-index: 3;
-  border-radius: inherit; pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(circle 220px at var(--gx, 50%) var(--gy, 0%),
-    rgba(255,255,255,0.11), transparent 62%);
-  transition: opacity 0.4s ease;
-}
-.hero-card-tilt:hover .hvc-glare { opacity: 1; }
 
 /* Interior breathing room — the v2 paddings were tight for a 418px card */
 .hvc-header { padding: 15px 22px; }
@@ -2221,7 +2194,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
   .hero-social { justify-content: flex-start; }
   .hero-roles { min-width: 13em; }
   /* single column now spans the viewport, so it can take a larger cap */
-  .name-line { font-size: min(24cqw, 190px); }
+  .name-line { font-size: min(28.3cqw, 210px); }
 }
 
 @media (max-width: 600px) {
@@ -2231,7 +2204,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
   .hero-firstname { letter-spacing: 0.34em; }
   .hero-rail { font-size: 9px; }
   .hero-rail-count { display: none; }
-  .name-line { font-size: min(24.4cqw, 130px); }
+  .name-line { font-size: min(28.3cqw, 150px); }
 }
 
 @media (max-width: 400px) {

@@ -400,10 +400,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* ── Hero card: 3D tilt + specular glare follow ── */
+  /* ── Hero card: 3D tilt ── */
   const cardTilt  = document.getElementById('heroCardTilt');
   const cardInner = document.getElementById('heroVisualCard');
-  const glare     = cardInner?.querySelector('.hvc-glare');
 
   if (cardTilt && cardInner && !lowMotion) {
     let hovering = false;
@@ -424,11 +423,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power2.out',
         transformPerspective: 1100,
       });
-
-      if (glare) {
-        glare.style.setProperty('--gx', (px * 100) + '%');
-        glare.style.setProperty('--gy', (py * 100) + '%');
-      }
     }, { passive: true });
 
     cardTilt.addEventListener('mouseleave', () => {
