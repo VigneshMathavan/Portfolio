@@ -105,14 +105,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Hero reveal (GSAP timeline) ── */
   function revealHero() {
-    gsap.set('#heroTag',       { opacity: 0, y: 10 });
-    gsap.set('#heroFirstname', { opacity: 0 });
-    gsap.set('#heroMainLine',  { opacity: 1, yPercent: 0 });
+    gsap.set('#heroTag',        { opacity: 0, y: 10 });
+    gsap.set('#heroFirstname',  { opacity: 0 });
+    gsap.set('#heroMainLine',   { opacity: 1, yPercent: 0 });
+    gsap.set('#heroTagline',    { opacity: 0, y: 18 });
+    gsap.set('#heroCtas',       { opacity: 0, y: 14 });
+    gsap.set('#heroSocial',     { opacity: 0 });
+    gsap.set('#heroVisualCard', { opacity: 0, x: 36 });
 
     const tl = gsap.timeline({ delay: 0.1 });
 
-    tl.to('#heroTag',       { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
-      .to('#heroFirstname', { opacity: 1,        duration: 0.5, ease: 'power2.out' }, '-=0.4');
+    tl.to('#heroTag',        { opacity: 1, y: 0,  duration: 0.7,  ease: 'power3.out' })
+      .to('#heroFirstname',  { opacity: 1,         duration: 0.5,  ease: 'power2.out' }, '-=0.4')
+      .to('#heroTagline',    { opacity: 1, y: 0,  duration: 0.7,  ease: 'power3.out' }, '-=0.2')
+      .to('#heroCtas',       { opacity: 1, y: 0,  duration: 0.6,  ease: 'power3.out' }, '-=0.4')
+      .to('#heroSocial',     { opacity: 1,         duration: 0.5,  ease: 'power2.out' }, '-=0.3')
+      .to('#heroVisualCard', { opacity: 1, x: 0,  duration: 1.05, ease: 'power3.out' }, '-=0.9');
   }
 
 

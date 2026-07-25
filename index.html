@@ -56,23 +56,96 @@
 
   <!-- ── Hero ── -->
   <section id="hero">
-    <!-- Particles: flow top → bottom -->
     <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
-
     <div class="hero-orbs" aria-hidden="true">
       <span class="hero-orb hero-orb--1"></span>
       <span class="hero-orb hero-orb--2"></span>
     </div>
 
-    <div class="hero-inner">
-      <p class="hero-tag" id="heroTag">Product Manager</p>
+    <div class="hero-split">
 
-      <div class="hero-name" id="heroName">
-        <span class="hero-firstname" id="heroFirstname">VIGNESH</span>
-        <div class="name-wrap" id="nameWrapPrimary">
-          <div class="name-line" id="heroMainLine">Mathavan</div>
+      <!-- LEFT: text -->
+      <div class="hero-left">
+        <p class="hero-tag" id="heroTag">Product Manager</p>
+        <div class="hero-name" id="heroName">
+          <span class="hero-firstname" id="heroFirstname">VIGNESH</span>
+          <div class="name-wrap" id="nameWrapPrimary">
+            <div class="name-line" id="heroMainLine">Mathavan</div>
+          </div>
+        </div>
+        <p class="hero-tagline" id="heroTagline">I turn data into decisions —<br>and ideas into products.</p>
+        <div class="hero-ctas" id="heroCtas">
+          <a href="#work" class="hero-cta-primary">VIEW WORK <span class="hero-cta-arrow">→</span></a>
+          <a href="https://drive.google.com/file/d/1qEQWZFeB4kqhSEeli-U86kwmDEi0Qqmx/view?usp=sharing" target="_blank" rel="noopener" class="hero-cta-ghost">GET RESUME ↗</a>
+        </div>
+        <nav class="hero-social" id="heroSocial">
+          <a href="https://linkedin.com/in/vigneshmathavan" target="_blank" rel="noopener">LINKEDIN</a>
+          <span class="hero-social-sep">·</span>
+          <a href="https://github.com/VigneshMathavan" target="_blank" rel="noopener">GITHUB</a>
+          <span class="hero-social-sep">·</span>
+          <a href="mailto:vigneshmathavan72@gmail.com">EMAIL</a>
+        </nav>
+      </div>
+
+      <!-- RIGHT: visual card -->
+      <div class="hero-right" aria-hidden="true">
+        <div class="hero-visual-card" id="heroVisualCard">
+          <div class="hvc-header">
+            <div class="hvc-dots">
+              <span class="hvc-dot"></span>
+              <span class="hvc-dot"></span>
+              <span class="hvc-dot"></span>
+            </div>
+            <span class="hvc-title">PORTFOLIO · 2026</span>
+          </div>
+          <div class="hvc-chart">
+            <svg viewBox="0 0 300 88" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="hvcGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(232,39,26,0.22)"/>
+                  <stop offset="100%" stop-color="rgba(232,39,26,0)"/>
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="22" x2="300" y2="22" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="0" y1="44" x2="300" y2="44" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="0" y1="66" x2="300" y2="66" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <path class="hvc-area" d="M0,72 C50,65 80,44 120,36 S180,22 220,16 S268,8 300,5 L300,88 L0,88 Z" fill="url(#hvcGrad)"/>
+              <path class="hvc-line" d="M0,72 C50,65 80,44 120,36 S180,22 220,16 S268,8 300,5" fill="none" stroke="#e8271a" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="hvc-stats">
+            <div class="hvc-stat">
+              <span class="hvc-stat-val">7</span>
+              <span class="hvc-stat-key">Projects</span>
+            </div>
+            <div class="hvc-stat">
+              <span class="hvc-stat-val">0→1</span>
+              <span class="hvc-stat-key">Live SaaS</span>
+            </div>
+            <div class="hvc-stat">
+              <span class="hvc-stat-val">125K</span>
+              <span class="hvc-stat-key">ML signals</span>
+            </div>
+            <div class="hvc-stat">
+              <span class="hvc-stat-val">9.2</span>
+              <span class="hvc-stat-key">GPA</span>
+            </div>
+          </div>
+          <div class="hvc-tags">
+            <span>ROADMAPPING</span>
+            <span>USER RESEARCH</span>
+            <span>0→1 BUILDS</span>
+            <span>DATA ANALYTICS</span>
+            <span>PRD WRITING</span>
+            <span>COMPETITIVE ANALYSIS</span>
+          </div>
+          <div class="hvc-footer">
+            <span class="hvc-live-badge"><span class="hvc-live-dot"></span>OPEN TO WORK</span>
+            <span class="hvc-location">Chennai · India</span>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -319,6 +392,37 @@
       <div class="project-right">
         <div class="project-img project-img--roadmap">
           <a href="work/product-roadmap.html" class="project-link-arrow" aria-label="View Product Roadmap">↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" onclick="location.href='work/quantedge.html'" style="cursor:none;">
+      <div class="project-left">
+        <div class="project-num-row">
+          <span class="project-num">07</span>
+          <div class="badge badge--wip"><span class="badge-dot badge-dot--green"></span>LIVE</div>
+        </div>
+        <p class="project-client">0→1 Build · Fintech · 2025</p>
+        <h3 class="project-title">Bloomberg-style AI options trading terminal — built solo from zero</h3>
+        <div class="project-tags">
+          <span class="tag">0→1 BUILD</span>
+          <span class="tag">AI / ML</span>
+          <span class="tag">FINTECH</span>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-val">125K</div>
+            <div class="metric-lbl">Historical<br />signals seeded</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">13</div>
+            <div class="metric-lbl">Trading<br />strategies</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-img project-img--quantedge">
+          <a href="work/quantedge.html" class="project-link-arrow" aria-label="View QuantEdge project">↗</a>
         </div>
       </div>
     </article>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuantEdge Omega — Mathavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script>(function(){ var t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+  <div id="pageTransition" aria-hidden="true"></div>
+  <div class="proj-scroll-track" id="projScrollTrack" aria-hidden="true">
+    <div class="proj-scroll-track-fill" id="projScrollFill"></div>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <a href="../index.html" class="nav-logo">VM</a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html#contact" class="nav-cta"><span>Let's Connect</span></a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="proj-hero">
+    <div class="proj-hero-orb" aria-hidden="true"></div>
+    <div class="proj-hero-bg-num" aria-hidden="true">07</div>
+
+    <div class="proj-hero-topbar">
+      <span class="proj-num">07 / 07</span>
+      <div class="proj-hero-topbar-right">
+        <span class="proj-client-tag">0→1 PRODUCT · FINTECH · 2025</span>
+        <span class="proj-badge">LOCAL · LIVE</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-body">
+      <h1 class="proj-title">Bloomberg-style AI options trading terminal — built solo from zero</h1>
+      <div class="proj-hero-tags">
+        <span class="tag">0→1 BUILD</span>
+        <span class="tag">FINTECH</span>
+        <span class="tag">AI / ML</span>
+        <span class="tag">OPTIONS TRADING</span>
+        <span class="tag">PRODUCT ENGINEERING</span>
+        <span class="tag">DECISION SUPPORT</span>
+      </div>
+    </div>
+
+    <div class="proj-hero-stats">
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">125K</div>
+        <div class="proj-hero-stat-lbl">Historical<br />signals seeded</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">13</div>
+        <div class="proj-hero-stat-lbl">Trading<br />strategies</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">3-Layer</div>
+        <div class="proj-hero-stat-lbl">Node · Python ML<br />· Frontend</div>
+      </div>
+      <div class="proj-hero-stat">
+        <div class="proj-hero-stat-val">Live</div>
+        <div class="proj-hero-stat-lbl">Real trades<br />recorded</div>
+      </div>
+    </div>
+
+    <div class="proj-scroll-cue" aria-hidden="true">
+      <span class="proj-scroll-line"></span>
+      <span class="proj-scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── BODY ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="overview">
+      <p class="proj-section-label">OVERVIEW</p>
+      <h2 class="proj-section-heading">A Bloomberg Terminal for retail options buyers — built because nothing affordable did this well</h2>
+      <div class="proj-section-body">
+        <p>Most retail traders make options decisions in isolation — checking one indicator, one chart, one timeframe, with no system connecting the dots. QuantEdge Omega was built to solve exactly that: a Bloomberg-style intraday decision-support terminal for NIFTY, SENSEX, BANKNIFTY, and FINNIFTY options buyers, running a 12-condition signal engine across 7 timeframes simultaneously.</p>
+        <p>This is a full 0→1 product build — architecture design, backend engineering, ML model training, frontend UI, trade journaling, and a live AI learning loop that improves signal accuracy from every recorded trade. The system does not place orders. Every entry and exit is a conscious decision — the terminal provides the intelligence layer that makes that decision faster and more confident.</p>
+      </div>
+      <div class="proj-callout">
+        <p class="proj-callout-label">THE HONEST CLAIM</p>
+        <p class="proj-callout-text">"This is not a 90% accuracy system. No retail system is. Realistic target: 55–62% win rate at 1:2 R:R, which is profitable over 50+ trades. A well-tuned rule engine beats gut feel. ML adds +3–5% on top of that."</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── PROCESS ── -->
+  <section class="proj-section proj-section--wide" id="process">
+    <div class="proj-body-inner proj-body">
+      <p class="proj-section-label">ARCHITECTURE</p>
+      <h2 class="proj-section-heading">How the system is built</h2>
+    </div>
+
+    <div class="proj-hscroll-outer">
+      <div class="proj-hscroll-track">
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">01</span>
+          <p class="proj-step-label">LAYER 01</p>
+          <h3 class="proj-step-title">Node.js Backend — Signal Engine v2</h3>
+          <p class="proj-step-body">The core orchestration layer runs a 12-condition rule engine across 3 timeframes (5m + 15m + 1H). It classifies the current market regime into 5 states — trending up/down, ranging, volatile, quiet — and gates signals by time-of-day, IV percentile, OI flow, and directional conviction. Signals are scored as POTENTIAL / LIKELY / STRONG / ELITE and surfaced with full parameter breakdowns across 8 pillars.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">02</span>
+          <p class="proj-step-label">LAYER 02</p>
+          <h3 class="proj-step-title">Python ML Service — XGBoost + RF + LightGBM</h3>
+          <p class="proj-step-body">A FastAPI microservice runs three models in parallel: an XGBoost win probability classifier (P(trade wins)), a Random Forest regime classifier (5-state + confidence), and a LightGBM premium predictor (expected % change given spot move, delta, and IV). The 19-numeric + 18 one-hot feature vector is the contract shared between Node and Python — trained on 125,000 seeded backtest signals, then retrained nightly on real trade outcomes.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">03</span>
+          <p class="proj-step-label">LAYER 03</p>
+          <h3 class="proj-step-title">AI Learning Loop — Factor Correlation Engine</h3>
+          <p class="proj-step-body">The factor learner runs point-biserial correlation between each pillar's score and actual trade outcomes, computing an adaptive weight multiplier [0.4–1.6] per pillar. Pillars that consistently precede wins get boosted; those that don't get dampened. All 7 pillars are now learned. Nightly retrain at 23:30 IST. The weights are visible in the AI Learning Panel — the system explains its own confidence adjustments.</p>
+        </div>
+
+        <div class="proj-step">
+          <span class="proj-step-bg-num" aria-hidden="true">04</span>
+          <p class="proj-step-label">LAYER 04</p>
+          <h3 class="proj-step-title">Decision Intelligence — Exit, Risk, Narrative</h3>
+          <p class="proj-step-body">Every signal is enriched with: an Exit Intelligence module (T1/T2/SL/Timeout probability + median holding time), a Risk Engine (LOW/MED/HIGH/EXTREME with size recommendations), an Institutional Activity detector (BULLISH/BEARISH from ATM OI walls + volume spikes), and a Narrative Engine that produces plain-English trade explanations — no LLM, template-filled from the live parameter vector.</p>
+        </div>
+
+      </div>
+
+      <div class="proj-hscroll-progress" aria-hidden="true">
+        <div class="proj-hscroll-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ── -->
+  <div class="proj-body">
+
+    <section class="proj-section" id="solution">
+      <p class="proj-section-label">WHAT'S INSIDE</p>
+      <div class="proj-cols">
+        <div>
+          <h2 class="proj-section-heading">Every signal contains 15 intelligence layers</h2>
+          <div class="proj-section-body">
+            <p><strong style="color:var(--text);">Signal enrichment</strong> — Each actionable signal carries: 50+ live parameters, per-pillar 0–100 confidence scores, ML win probability, regime classification, 7-timeframe alignment grid, 10-year backtest stats per strategy, OI flow direction, expected move range, IV forecast, premium explosion probability, exit probability estimates, institutional activity verdict, live risk level, and a plain-English narrative.</p>
+            <p><strong style="color:var(--text);">Chain-Keeper</strong> — A persistent background cache polls the option chain every 2 seconds during market hours for all 4 indices. On broker failure it serves last-known-good with a staleness flag. Every signal records a chain snapshot — PCR, Max Pain, ATM IV, OI walls — at the moment of evaluation.</p>
+            <p><strong style="color:var(--text);">Walk-forward backtester</strong> — 125,582 signals seeded across NIFTY + BANKNIFTY + FINNIFTY + SENSEX × 7 timeframes × 13 strategies. Used for initial ML training and factor weight calibration. Real trades retrain the models nightly.</p>
+          </div>
+          <div class="proj-links">
+            <a href="../index.html#contact" class="proj-link-btn proj-link-btn--primary">DISCUSS THIS BUILD ↗</a>
+            <a href="../index.html#work" class="proj-link-btn proj-link-btn--ghost">← BACK TO WORK</a>
+          </div>
+        </div>
+        <div>
+          <div class="proj-callout" style="margin-top: 0;">
+            <p class="proj-callout-label">SKILLS DEMONSTRATED</p>
+            <p class="proj-callout-text proj-callout-text--muted">0→1 product engineering · Full-stack architecture (Node.js + Python + vanilla JS) · ML model training (XGBoost, Random Forest, LightGBM) · Fintech product design · Real-time WebSocket systems · SQLite data persistence · Feature engineering (60+ indicators) · Decision-support product thinking · Options market domain knowledge</p>
+          </div>
+          <div class="proj-callout">
+            <p class="proj-callout-label">TECH STACK</p>
+            <p class="proj-callout-text proj-callout-text--muted">Node.js · Express · WebSocket · Python · FastAPI · XGBoost · Random Forest · LightGBM · SQLite · TradingView Lightweight Charts · Upstox API · Breeze Connect · Kotak Neo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section" id="results">
+      <p class="proj-section-label">SCALE &amp; OUTCOMES</p>
+      <h2 class="proj-section-heading">What it took to build this</h2>
+
+      <div class="proj-metrics-big">
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">125K</div>
+          <div class="proj-metric-big-lbl">Historical signals seeded across 4 indices × 7 timeframes × 13 strategies — the foundation of the ML training corpus</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">7</div>
+          <div class="proj-metric-big-lbl">Intelligence pillars fully learned by the AI factor engine — Trend, VWAP, Volume, Volatility, Structure, SMC, Price Action</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">60+</div>
+          <div class="proj-metric-big-lbl">Engineered features computed on every signal evaluation: EMA stack, ADX, VWAP bands, cumulative delta, FVG detection, candle patterns</div>
+        </div>
+        <div class="proj-metric-row">
+          <div class="proj-metric-big-val">Live</div>
+          <div class="proj-metric-big-lbl">Real trades recorded, exit prices corrected, factor weights retrained nightly — the loop between signal and outcome is closed</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="proj-next">
+    <div>
+      <p class="proj-next-label">BACK TO WORK</p>
+      <a href="../index.html#work" class="proj-next-title">See all six case studies and projects</a>
+    </div>
+    <a href="../index.html#work" class="proj-next-arrow" aria-label="Back to work">→</a>
+  </div>
+
+  <footer class="proj-footer">
+    <span class="proj-footer-copy">© 2026 Vignesh Mathavan</span>
+    <a href="../index.html#work" class="proj-footer-back">← BACK TO WORK</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>
