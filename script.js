@@ -103,24 +103,64 @@ document.addEventListener('DOMContentLoaded', () => {
   lenis.on('scroll', ScrollTrigger.update);
 
 
+  /* ── Count-up helper ── */
+  function countUp(el) {
+    const target   = parseFloat(el.dataset.count);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const suffix   = el.dataset.suffix || '';
+    if (isNaN(target)) return;
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: target,
+      duration: 1.5,
+      ease: 'power2.out',
+      onUpdate() { el.textContent = obj.v.toFixed(decimals) + suffix; },
+      onComplete() { el.textContent = target.toFixed(decimals) + suffix; },
+    });
+  }
+
+
   /* ── Hero reveal (GSAP timeline) ── */
+  const nlChars = gsap.utils.toArray('#heroMainLine .nl-char');
+
   function revealHero() {
+    gsap.set('#heroMeta',       { opacity: 0, y: -10 });
     gsap.set('#heroTag',        { opacity: 0, y: 10 });
-    gsap.set('#heroFirstname',  { opacity: 0 });
-    gsap.set('#heroMainLine',   { opacity: 1, yPercent: 0 });
+    gsap.set('#heroFirstname',  { opacity: 0, y: 12 });
+    gsap.set('#heroMainLine',   { opacity: 1 });
+    gsap.set(nlChars,           { yPercent: 118, opacity: 0, rotate: 2.5 });
     gsap.set('#heroTagline',    { opacity: 0, y: 18 });
     gsap.set('#heroCtas',       { opacity: 0, y: 14 });
     gsap.set('#heroSocial',     { opacity: 0 });
-    gsap.set('#heroVisualCard', { opacity: 0, x: 36 });
+    gsap.set('#heroCardTilt',   { opacity: 0, x: 40, rotateY: -9 });
+    gsap.set('#heroRail',       { opacity: 0, y: 10 });
 
     const tl = gsap.timeline({ delay: 0.1 });
 
-    tl.to('#heroTag',        { opacity: 1, y: 0,  duration: 0.7,  ease: 'power3.out' })
-      .to('#heroFirstname',  { opacity: 1,         duration: 0.5,  ease: 'power2.out' }, '-=0.4')
-      .to('#heroTagline',    { opacity: 1, y: 0,  duration: 0.7,  ease: 'power3.out' }, '-=0.2')
-      .to('#heroCtas',       { opacity: 1, y: 0,  duration: 0.6,  ease: 'power3.out' }, '-=0.4')
-      .to('#heroSocial',     { opacity: 1,         duration: 0.5,  ease: 'power2.out' }, '-=0.3')
-      .to('#heroVisualCard', { opacity: 1, x: 0,  duration: 1.05, ease: 'power3.out' }, '-=0.9');
+    tl.to('#heroMeta',      { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' })
+      .to('#heroTag',       { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' }, '-=0.45')
+      .to('#heroFirstname', { opacity: 1, y: 0, duration: 0.6,  ease: 'power3.out' }, '-=0.4')
+      // the name — letter by letter
+      .to(nlChars, {
+        yPercent: 0, opacity: 1, rotate: 0,
+        duration: 1.15,
+        ease: 'expo.out',
+        stagger: 0.055,
+        onComplete() {
+          // drop the inline transform so the CSS :hover lift can take over
+          gsap.set(nlChars, { clearProps: 'transform,willChange' });
+        },
+      }, '-=0.3')
+      .to('#heroTagline',  { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.85')
+      .to('#heroCtas',     { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.5')
+      .to('#heroSocial',   { opacity: 1,       duration: 0.5, ease: 'power2.out' }, '-=0.35')
+      .to('#heroCardTilt', {
+        opacity: 1, x: 0, rotateY: 0,
+        duration: 1.15, ease: 'power3.out',
+        onStart() { document.querySelectorAll('.hvc-stat-val[data-count]').forEach(countUp); },
+      }, '-=1.05')
+      .to('#heroRail',     { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.6')
+      .add(() => { initHeroExit(); ScrollTrigger.refresh(); });
   }
 
 
@@ -132,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('pageshow', e => {
     if (!e.persisted) return;              // normal load — already handled above
     document.body.classList.remove('is-loading');
+    document.getElementById('preloader')?.classList.add('hidden');
 
     if (pageOverlay) {
       gsap.killTweensOf(pageOverlay);
@@ -151,83 +192,307 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /* ── Hero Particles — top to bottom ── */
-  const canvas = document.getElementById('heroParticles');
-  if (canvas) {
-    const ctx   = canvas.getContext('2d');
-    const COUNT = 22;
-    let   particles  = [];
-    let   animActive = true;
+  /* ── Hero constellation — drifting nodes that link to each other
+        and reach for the cursor. Repels under the pointer. ── */
+  const canvas   = document.getElementById('heroParticles');
+  const heroEl   = document.getElementById('hero');
+  const lowMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function resizeCanvas() {
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+  if (canvas && heroEl) {
+    const ctx = canvas.getContext('2d');
+    const LINK_D  = 128;   // node ↔ node link radius
+    const MOUSE_D = 200;   // cursor influence radius
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    let W = 0, H = 0;
+    let nodes = [];
+    let running = true;
+    let rafId = null;
+    const mouse = { x: -9999, y: -9999, on: false };
+
+    function nodeCount() {
+      if (W < 640) return 26;
+      return Math.round(Math.min(96, Math.max(34, (W * H) / 17000)));
     }
 
-    function mkParticle(startY) {
-      return {
-        x:     Math.random() * canvas.width,
-        y:     startY !== undefined ? startY : -10,
-        r:     Math.random() * 1.8 + 0.5,
-        speed: Math.random() * 0.3 + 0.1,
-        alpha: 0,
-      };
+    function build() {
+      nodes = [];
+      const n = nodeCount();
+      for (let i = 0; i < n; i++) {
+        nodes.push({
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.26,
+          vy: (Math.random() - 0.5) * 0.26,
+          r:  Math.random() * 1.35 + 0.65,
+        });
+      }
     }
 
-    resizeCanvas();
-    for (let i = 0; i < COUNT; i++) {
-      particles.push(mkParticle(Math.random() * canvas.height));
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      W = Math.max(1, rect.width);
+      H = Math.max(1, rect.height);
+      canvas.width  = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      build();
     }
 
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      particles.forEach(p => { p.x = Math.random() * canvas.width; });
+    heroEl.addEventListener('mousemove', e => {
+      const r = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - r.left;
+      mouse.y = e.clientY - r.top;
+      mouse.on = true;
     }, { passive: true });
 
-    function drawParticles() {
-      if (!animActive) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    heroEl.addEventListener('mouseleave', () => {
+      mouse.on = false;
+      mouse.x = mouse.y = -9999;
+    }, { passive: true });
 
-      particles.forEach((p, i) => {
-        p.y += p.speed;
+    function frame() {
+      rafId = null;
+      if (!running) return;
+      ctx.clearRect(0, 0, W, H);
 
-        // Fade in at top, fade out at bottom
-        const prog = p.y / canvas.height;
-        let   a;
-        if      (prog < 0.12) a = prog / 0.12;
-        else if (prog > 0.80) a = (1 - prog) / 0.20;
-        else                  a = 1;
-        a = Math.max(0, Math.min(1, a)) * 0.72;
+      // ── move ──
+      for (const p of nodes) {
+        p.x += p.vx;
+        p.y += p.vy;
 
-        // Core dot
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(232,39,26,${a})`;
-        ctx.fill();
+        // gentle repulsion from the cursor
+        if (mouse.on) {
+          const dx = p.x - mouse.x, dy = p.y - mouse.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < MOUSE_D * MOUSE_D && d2 > 0.01) {
+            const d = Math.sqrt(d2);
+            const push = (1 - d / MOUSE_D) * 0.9;
+            p.x += (dx / d) * push;
+            p.y += (dy / d) * push;
+          }
+        }
 
-        // Soft glow halo
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
-        g.addColorStop(0, `rgba(232,39,26,${a * 0.24})`);
+        // wrap at the edges
+        if (p.x < -20) p.x = W + 20; else if (p.x > W + 20) p.x = -20;
+        if (p.y < -20) p.y = H + 20; else if (p.y > H + 20) p.y = -20;
+      }
+
+      // ── node ↔ node links ──
+      ctx.lineWidth = 1;
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 > LINK_D * LINK_D) continue;
+          const t = 1 - Math.sqrt(d2) / LINK_D;
+          ctx.strokeStyle = `rgba(232,39,26,${(t * 0.20).toFixed(3)})`;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+
+      // ── cursor links — brighter, the interactive payoff ──
+      if (mouse.on) {
+        for (const p of nodes) {
+          const dx = p.x - mouse.x, dy = p.y - mouse.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 > MOUSE_D * MOUSE_D) continue;
+          const t = 1 - Math.sqrt(d2) / MOUSE_D;
+          ctx.strokeStyle = `rgba(232,39,26,${(t * 0.5).toFixed(3)})`;
+          ctx.lineWidth = 1 + t * 0.5;
+          ctx.beginPath();
+          ctx.moveTo(mouse.x, mouse.y);
+          ctx.lineTo(p.x, p.y);
+          ctx.stroke();
+        }
+        ctx.lineWidth = 1;
+      }
+
+      // ── nodes ──
+      for (const p of nodes) {
+        let boost = 0;
+        if (mouse.on) {
+          const dx = p.x - mouse.x, dy = p.y - mouse.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < MOUSE_D) boost = 1 - d / MOUSE_D;
+        }
+        const a = 0.42 + boost * 0.5;
+        const r = p.r + boost * 1.1;
+
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 6);
+        g.addColorStop(0, `rgba(232,39,26,${(a * 0.28).toFixed(3)})`);
         g.addColorStop(1, 'rgba(232,39,26,0)');
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
         ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r * 6, 0, Math.PI * 2);
         ctx.fill();
 
-        // Reset when off-screen bottom
-        if (p.y > canvas.height + 12) particles[i] = mkParticle();
-      });
+        ctx.fillStyle = `rgba(255,120,105,${a.toFixed(3)})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
-      requestAnimationFrame(drawParticles);
+      rafId = requestAnimationFrame(frame);
     }
 
-    drawParticles();
+    function start() { if (!rafId && running) rafId = requestAnimationFrame(frame); }
 
-    // Pause when hero scrolls out of view
-    new IntersectionObserver(entries => {
-      animActive = entries[0].isIntersecting;
-      if (animActive) drawParticles();
-    }, { threshold: 0 }).observe(document.getElementById('hero'));
+    resize();
+    let rTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(rTimer);
+      rTimer = setTimeout(resize, 160);
+    }, { passive: true });
+
+    if (lowMotion) {
+      // draw one static frame, then stop
+      running = true; frame(); running = false;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    } else {
+      start();
+      // pause the loop whenever the hero is off-screen
+      new IntersectionObserver(entries => {
+        running = entries[0].isIntersecting;
+        if (running) start();
+        else if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      }, { threshold: 0 }).observe(heroEl);
+    }
+  }
+
+
+  /* ── Live Chennai clock (IST, independent of viewer's timezone) ── */
+  const clockEl = document.getElementById('heroClock');
+  if (clockEl) {
+    const fmt = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Kolkata',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+    });
+    const tickClock = () => { clockEl.textContent = fmt.format(new Date()) + ' IST'; };
+    tickClock();
+    setInterval(tickClock, 1000);
+  }
+
+
+  /* ── Rotating role words ── */
+  const roleItems = gsap.utils.toArray('#heroRoles .hero-role-item');
+  if (roleItems.length > 1 && !lowMotion) {
+    let ri = 0;
+    setInterval(() => {
+      const cur  = roleItems[ri];
+      ri = (ri + 1) % roleItems.length;
+      const next = roleItems[ri];
+
+      cur.classList.remove('is-active');
+      cur.classList.add('is-out');
+      next.classList.remove('is-out');
+      // force a reflow so the transition runs from the "below" position
+      void next.offsetWidth;
+      next.classList.add('is-active');
+
+      setTimeout(() => cur.classList.remove('is-out'), 700);
+    }, 2800);
+  }
+
+
+  /* ── Hero card: 3D tilt + specular glare follow ── */
+  const cardTilt  = document.getElementById('heroCardTilt');
+  const cardInner = document.getElementById('heroVisualCard');
+  const glare     = cardInner?.querySelector('.hvc-glare');
+
+  if (cardTilt && cardInner && !lowMotion) {
+    let hovering = false;
+
+    cardTilt.addEventListener('mouseenter', () => { hovering = true; });
+
+    cardTilt.addEventListener('mousemove', e => {
+      if (!hovering) return;
+      const r  = cardTilt.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;   // 0 → 1
+      const py = (e.clientY - r.top)  / r.height;
+
+      gsap.to(cardInner, {
+        rotateY: (px - 0.5) * 15,
+        rotateX: (0.5 - py) * 13,
+        scale: 1.02,
+        duration: 0.5,
+        ease: 'power2.out',
+        transformPerspective: 1100,
+      });
+
+      if (glare) {
+        glare.style.setProperty('--gx', (px * 100) + '%');
+        glare.style.setProperty('--gy', (py * 100) + '%');
+      }
+    }, { passive: true });
+
+    cardTilt.addEventListener('mouseleave', () => {
+      hovering = false;
+      gsap.to(cardInner, {
+        rotateX: 0, rotateY: 0, scale: 1,
+        duration: 0.9, ease: 'elastic.out(1, 0.62)',
+      });
+    });
+  }
+
+
+  /* ── Magnetic buttons ── */
+  if (!lowMotion) {
+    document.querySelectorAll('[data-magnetic]').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        gsap.to(btn, {
+          x: (e.clientX - r.left - r.width  / 2) * 0.28,
+          y: (e.clientY - r.top  - r.height / 2) * 0.42,
+          duration: 0.4, ease: 'power2.out',
+        });
+      }, { passive: true });
+
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)' });
+      });
+    });
+  }
+
+
+  /* ── Hero: subtle counter-parallax on the name + card ── */
+  if (heroEl && !lowMotion && window.innerWidth > 1080) {
+    heroEl.addEventListener('mousemove', e => {
+      const cx = (e.clientX / window.innerWidth  - 0.5);
+      const cy = (e.clientY / window.innerHeight - 0.5);
+      gsap.to('#heroName',  { x: cx * -22, y: cy * -12, duration: 1.1, ease: 'power2.out' });
+      gsap.to('.hero-orbs', { x: cx *  30, y: cy *  18, duration: 1.4, ease: 'power2.out' });
+    }, { passive: true });
+  }
+
+
+  /* ── Hero exit: content recedes as you scroll past it.
+        Built only AFTER the reveal finishes — a scrub tween created while the
+        elements are still at opacity:0 would latch onto that 0 and pin them
+        there, overriding the reveal. ── */
+  let heroExitTweens = [];
+  function initHeroExit() {
+    if (!heroEl || lowMotion) return;
+    heroExitTweens.forEach(t => { t.scrollTrigger?.kill(); t.kill(); });
+    heroExitTweens = [
+      gsap.fromTo('.hero-split',
+        { y: 0, opacity: 1, scale: 1 },
+        {
+          y: -70, opacity: 0.15, scale: 0.97, ease: 'none',
+          scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.6 },
+        }),
+      gsap.fromTo(['#heroMeta', '#heroRail'],
+        { opacity: 1 },
+        {
+          opacity: 0, ease: 'none',
+          scrollTrigger: { trigger: '#hero', start: 'top top', end: '38% top', scrub: 0.4 },
+        }),
+    ];
   }
 
 
@@ -444,27 +709,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-
-  /* ── bfcache: sweep overlay out if page is restored from history ── */
-  window.addEventListener('pageshow', e => {
-    if (!e.persisted) return;
-    // Page was restored from back-forward cache — overlay is still covering screen
-    if (pageOverlay) {
-      pageOverlay.style.pointerEvents = 'auto';
-      gsap.set(pageOverlay, { transformOrigin: 'right center', scaleX: 1 });
-      gsap.to(pageOverlay, {
-        scaleX: 0,
-        duration: 0.85,
-        ease: 'expo.inOut',
-        onComplete: () => { pageOverlay.style.pointerEvents = 'none'; }
-      });
-    }
-    // Ensure preloader is hidden and body is not locked
-    const _pre = document.getElementById('preloader');
-    if (_pre) _pre.classList.add('hidden');
-    document.body.classList.remove('is-loading');
-  });
 
 
 });

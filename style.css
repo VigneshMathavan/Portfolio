@@ -1,4 +1,16 @@
 /* ─────────────────────────────────────────────
+   Brand — signature face for the hero name
+───────────────────────────────────────────── */
+@font-face {
+  font-family: 'Brand';
+  src: url('assets/fonts/Brand.woff') format('woff'),
+       url('assets/fonts/Brand.ttf')  format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ─────────────────────────────────────────────
    CSS Custom Properties / Themes
 ───────────────────────────────────────────── */
 :root {
@@ -530,9 +542,9 @@ body.cursor-hidden .cursor-ring { opacity: 0; }
 /* The name wrap clips the slide-in */
 .name-wrap { overflow: hidden; }
 
-/* Mathavan — Cherish, bold hand-lettered feel */
+/* Mathavan — Brand, signature face */
 .name-line {
-  font-family: 'Cherish', cursive;
+  font-family: 'Brand', 'Cherish', cursive;
   font-weight: 400;
   font-size: clamp(60px, 11vw, 160px);
   line-height: 1.05;
@@ -1859,4 +1871,372 @@ footer p { font-size: 12px; color: var(--text-muted); }
   .hero-topbar-yr { display: none; }
   .hero-footer { gap: 20px; }
   .about-manifesto-text { font-size: clamp(22px, 7vw, 40px); }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   HERO v3 — editorial / interactive
+   (appended last: wins the cascade)
+═════════════════════════════════════════════════════════════ */
+
+/* ── Structure: three pinned bands ── */
+#hero {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  align-items: stretch;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--nav-height) + 20px) var(--gutter) 20px;
+  overflow: hidden;
+}
+
+.hero-particles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+/* Soft edge vignette so the particle field fades into the frame */
+.hero-vignette {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse 78% 68% at 50% 42%, transparent 42%, rgba(8,8,8,0.55) 100%);
+}
+[data-theme="light"] .hero-vignette {
+  background: radial-gradient(ellipse 78% 68% at 50% 42%, transparent 45%, rgba(240,235,226,0.6) 100%);
+}
+
+/* ─────────────────────────────
+   BAND 1 — top meta rail
+───────────────────────────── */
+.hero-meta {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  color: var(--text-muted);
+  opacity: 0;
+}
+
+.hero-meta-status { display: inline-flex; align-items: center; gap: 8px; color: var(--text); }
+.hero-meta-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34,197,94,0.55);
+  animation: metaPing 2.4s cubic-bezier(0.16,1,0.3,1) infinite;
+}
+@keyframes metaPing {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+  70%  { box-shadow: 0 0 0 9px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+.hero-meta-mid { letter-spacing: 0.3em; opacity: 0.5; }
+.hero-meta-mid i { color: var(--red); font-style: normal; opacity: 1; }
+
+.hero-meta-clock { display: inline-flex; align-items: center; gap: 8px; }
+.hero-meta-clock b {
+  font-family: 'Unbounded', sans-serif; font-weight: 400;
+  color: var(--text); letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  min-width: 8.4em; text-align: right;
+}
+
+/* ─────────────────────────────
+   BAND 2 — name banner + lower row
+───────────────────────────── */
+.hero-split {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2.6vh, 42px);
+  grid-template-columns: none;
+  padding: clamp(8px, 1.6vh, 28px) 0;
+}
+
+/* The name gets the full hero width */
+.hero-banner { display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
+
+/* Copy left, live card right */
+.hero-lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 430px);
+  gap: clamp(28px, 5vw, 80px);
+  align-items: end;
+  width: 100%;
+}
+
+/* ── Role line: red rule + rotating words ── */
+.hero-roleline {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: clamp(10px, 1.8vh, 20px);
+  opacity: 0;
+}
+.hero-roleline-rule {
+  width: clamp(28px, 4vw, 56px); height: 1px; flex-shrink: 0;
+  background: linear-gradient(90deg, var(--red), rgba(232,39,26,0.15));
+}
+.hero-roles {
+  position: relative; display: block;
+  height: 1.35em; overflow: hidden; min-width: 15em;
+}
+.hero-role-item {
+  position: absolute; left: 0; top: 0; white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(10px, 1.05vw, 12px);
+  font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--red);
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform 0.62s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease;
+}
+.hero-role-item.is-active { transform: translateY(0); opacity: 1; }
+.hero-role-item.is-out    { transform: translateY(-120%); opacity: 0; }
+
+/* ── VIGNESH overline ── */
+.hero-name { text-align: left; width: 100%; }
+
+.hero-firstname {
+  font-size: clamp(11px, 1.35vw, 19px);
+  letter-spacing: 0.42em;
+  color: var(--text-muted);
+  margin-bottom: clamp(2px, 0.8vh, 10px);
+  /* optical alignment: the Didone "M" has no left sidebearing to speak of */
+  padding-left: 0.35em;
+}
+
+/* ── MATHAVAN — the showpiece ── */
+.name-wrap { overflow: hidden; padding-bottom: 0.06em; }
+
+.name-line {
+  font-family: 'Brand', Georgia, serif;
+  /* nowrap + vw keeps the 8 caps filling the hero width without ever wrapping;
+     the vh term stops a wide-but-short window from overflowing the fold */
+  font-size: max(52px, min(17.4vw, 27vh, 248px));
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  display: flex;
+  margin: 0;
+  /* neutralise the older gradient/shadow rules — chars own their fill now */
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+  filter: drop-shadow(0 6px 42px rgba(0,0,0,0.55));
+  transform: none;
+  opacity: 1;
+}
+
+.nl-char {
+  display: inline-block;
+  will-change: transform;
+  background: linear-gradient(180deg, #fffcf7 0%, #f2ebe1 44%, #bdac9a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1),
+              background 0.35s ease;
+}
+/* letter-level hover — the name responds to the cursor */
+.nl-char:hover {
+  background: linear-gradient(180deg, #ff6a5e 0%, #e8271a 55%, #a01208 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  transform: translateY(-0.055em);
+}
+
+[data-theme="light"] .name-line { filter: drop-shadow(0 6px 34px rgba(0,0,0,0.14)); }
+[data-theme="light"] .nl-char {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0c0c0c 50%, #3a3128 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .nl-char:hover {
+  background: linear-gradient(180deg, #ff6a5e 0%, #e8271a 55%, #a01208 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ── tagline / ctas ── */
+.hero-tagline {
+  margin-top: clamp(16px, 2.4vh, 30px);
+  max-width: 30ch;
+  font-size: clamp(14px, 1.45vw, 18px);
+  line-height: 1.7;
+}
+
+.hero-ctas { margin-top: clamp(20px, 2.8vh, 34px); }
+
+.hero-cta-primary, .hero-cta-ghost { will-change: transform; }
+
+.hero-cta-primary {
+  position: relative; overflow: hidden;
+  background: linear-gradient(to right, transparent 50%, var(--red) 50%);
+  background-size: 202% 100%;
+  background-position: right center;
+  color: #fff;
+  transition: background-position 0.5s cubic-bezier(0.16,1,0.3,1), color 0.35s ease;
+}
+.hero-cta-primary:hover { background-position: left center; color: var(--red); }
+.hero-cta-primary .hero-cta-arrow { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); display: inline-block; }
+.hero-cta-primary:hover .hero-cta-arrow { transform: translateX(5px); }
+
+.hero-cta-ghost { position: relative; }
+.hero-cta-ghost:hover { border-color: var(--red); color: var(--red); }
+
+.hero-social { margin-top: clamp(16px, 2.2vh, 28px); }
+.hero-social a { position: relative; }
+.hero-social a::after {
+  content: ''; position: absolute; left: 0; bottom: -4px;
+  width: 100%; height: 1px; background: var(--red);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.42s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-social a:hover::after { transform: scaleX(1); }
+.hero-social a:hover { color: var(--red); }
+
+/* ─────────────────────────────
+   Card — 3D tilt + glare
+───────────────────────────── */
+.hero-card-tilt {
+  width: 100%;
+  max-width: 430px;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.hero-visual-card {
+  position: relative;
+  max-width: none;
+  opacity: 1;                 /* the tilt wrapper owns the reveal now */
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow:
+    0 30px 70px -30px rgba(0,0,0,0.75),
+    0 0 0 1px var(--border) inset;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.028) 0%, transparent 46%),
+    var(--bg-card);
+}
+
+.hvc-glare {
+  position: absolute; inset: 0; z-index: 3;
+  border-radius: inherit; pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle 220px at var(--gx, 50%) var(--gy, 0%),
+    rgba(255,255,255,0.11), transparent 62%);
+  transition: opacity 0.4s ease;
+}
+.hero-card-tilt:hover .hvc-glare { opacity: 1; }
+
+.hvc-chart-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.hvc-chart-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.2em; color: var(--text-muted);
+}
+.hvc-chart-delta {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: #22c55e;
+}
+
+.hvc-tip {
+  opacity: 0;
+  animation: hvcTipIn 0.4s 2.9s ease forwards, hvcTipPulse 2.4s 3.3s ease-in-out infinite;
+}
+@keyframes hvcTipIn    { to { opacity: 1; } }
+@keyframes hvcTipPulse { 0%,100% { r: 3; opacity: 1; } 50% { r: 4.6; opacity: 0.55; } }
+
+.hvc-stat { transition: background 0.3s ease; }
+.hvc-stat:hover { background: var(--red-bg); }
+.hvc-stat-val { font-variant-numeric: tabular-nums; }
+
+.hvc-tags span { transition: border-color 0.28s ease, color 0.28s ease; }
+.hvc-tags span:hover { border-color: var(--red); color: var(--red); }
+
+/* ─────────────────────────────
+   BAND 3 — bottom rail
+───────────────────────────── */
+.hero-rail {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  color: var(--text-muted);
+  opacity: 0;
+}
+
+.hero-rail-cue { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.hero-rail-cue-line {
+  position: relative; width: 46px; height: 1px; background: var(--border-hover); overflow: hidden;
+}
+.hero-rail-cue-line::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--red);
+  transform: translateX(-100%);
+  animation: railSweep 2.6s cubic-bezier(0.65,0,0.35,1) infinite;
+}
+@keyframes railSweep {
+  0%   { transform: translateX(-100%); }
+  55%  { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+.hero-rail-strip {
+  display: inline-flex; align-items: center; gap: 10px;
+  white-space: nowrap; overflow: hidden;
+  letter-spacing: 0.16em; opacity: 0.72;
+}
+.hero-rail-strip b { font-family: 'Unbounded', sans-serif; font-weight: 700; color: var(--text); }
+.hero-rail-strip i { color: var(--red); font-style: normal; font-size: 7px; opacity: 0.8; }
+
+/* The old absolute scroll indicator duplicates the rail — retire it */
+.scroll-indicator { display: none !important; }
+
+/* ─────────────────────────────
+   Responsive
+───────────────────────────── */
+@media (max-width: 1080px) {
+  .hero-lower { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 36px; }
+  .hero-meta-mid { display: none; }
+}
+
+@media (max-width: 900px) {
+  #hero { padding-top: calc(var(--nav-height) + 12px); }
+  .hero-lower { grid-template-columns: 1fr; gap: 34px; align-items: start; }
+  .hero-right { display: flex; justify-content: flex-start; }
+  .hero-card-tilt { max-width: 100%; }
+  /* stay left-aligned on mobile — the v2 rules centred all of this */
+  .hero-left { align-items: flex-start; text-align: left; }
+  .hero-left .hero-name,
+  .hero-name { text-align: left; }
+  .hero-tagline { max-width: 40ch; text-align: left; }
+  .hero-ctas { justify-content: flex-start; }
+  .hero-social { justify-content: flex-start; }
+  .hero-rail-strip { display: none; }
+  .hero-roles { min-width: 13em; }
+  /* name now spans the whole narrow viewport */
+  .name-line { font-size: max(46px, min(18vw, 168px)); }
+}
+
+@media (max-width: 600px) {
+  #hero { padding-bottom: 16px; }
+  .hero-meta { font-size: 9px; letter-spacing: 0.16em; gap: 10px; }
+  .hero-meta-clock b { min-width: 7.6em; }
+  .hero-firstname { letter-spacing: 0.34em; }
+  .hero-rail { font-size: 9px; }
+  .name-line { font-size: 17.8vw; }
+}
+
+@media (max-width: 400px) {
+  .hero-meta-status { font-size: 8px; }
+  .hero-meta-clock { display: none; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-meta-dot, .hero-rail-cue-line::after, .hvc-tip,
+  .hvc-live-dot, .hero-orb--1, .hero-orb--2 { animation: none !important; }
+  .nl-char { transition: none; }
 }
