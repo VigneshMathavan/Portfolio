@@ -1892,6 +1892,13 @@ footer p { font-size: 12px; color: var(--text-muted); }
 
 .hero-particles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
+/* Red bloom behind the nav/name — removed, the hero stays flat and dark */
+.hero-orbs { display: none; }
+
+/* Nav is logo + actions only now (the Work/About/Contact group is gone),
+   so the 3-column grid would strand the actions mid-row */
+#navbar { grid-template-columns: 1fr auto; }
+
 /* Soft edge vignette so the particle field fades into the frame */
 .hero-vignette {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -2041,15 +2048,6 @@ footer p { font-size: 12px; color: var(--text-muted); }
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1),
-              background 0.35s ease;
-}
-/* letter-level hover — the name responds to the cursor */
-.nl-char:hover {
-  background: linear-gradient(180deg, #ff6a5e 0%, #e8271a 55%, #a01208 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  transform: translateY(-0.055em);
 }
 
 [data-theme="light"] .name-line { filter: drop-shadow(0 6px 34px rgba(0,0,0,0.14)); }
@@ -2058,11 +2056,6 @@ footer p { font-size: 12px; color: var(--text-muted); }
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-[data-theme="light"] .nl-char:hover {
-  background: linear-gradient(180deg, #ff6a5e 0%, #e8271a 55%, #a01208 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
 }
 
 /* ── tagline / ctas ── */

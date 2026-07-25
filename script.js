@@ -465,8 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroEl.addEventListener('mousemove', e => {
       const cx = (e.clientX / window.innerWidth  - 0.5);
       const cy = (e.clientY / window.innerHeight - 0.5);
-      gsap.to('#heroName',  { x: cx * -22, y: cy * -12, duration: 1.1, ease: 'power2.out' });
-      gsap.to('.hero-orbs', { x: cx *  30, y: cy *  18, duration: 1.4, ease: 'power2.out' });
+      gsap.to('#heroName', { x: cx * -22, y: cy * -12, duration: 1.1, ease: 'power2.out' });
     }, { passive: true });
   }
 
