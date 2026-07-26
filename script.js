@@ -614,6 +614,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (t) {
         e.preventDefault();
         lenis.scrollTo(t, { offset: -80, duration: 1.4 });
+        // Lenis only scrolls — move focus too, or a keyboard user carries on
+        // tabbing from the top of the document instead of the target.
+        if (a.classList.contains('skip-link')) t.focus({ preventScroll: true });
       }
     });
   });

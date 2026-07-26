@@ -32,7 +32,9 @@
   --bg-card:      #0f0f0f;
   --bg-card-2:    #141414;
   --text:         #f0ebe4;
-  --text-muted:   #686868;
+  /* #686868 measured 3.59:1 on --bg, under the 4.5:1 AA floor for body text.
+     #8a8a8a lands at ~5.8:1 and still reads as a muted grey. */
+  --text-muted:   #8a8a8a;
   --text-faint:   #2a2a2a;
   --border:       rgba(255, 255, 255, 0.06);
   --border-hover: rgba(255, 255, 255, 0.14);
@@ -2242,4 +2244,103 @@ footer p { font-size: 12px; color: var(--text-muted); }
   .hero-meta-dot, .hero-rail-cue-line::after, .hvc-tip,
   .hvc-live-dot, .hero-orb--1, .hero-orb--2 { animation: none !important; }
   .nl-char { transition: none; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   KEYBOARD ACCESS
+   body{cursor:none} hides the pointer for mouse users, so without
+   these rules a keyboard user has no idea where they are.
+═════════════════════════════════════════════════════════════ */
+
+/* Keyboard-only ring — :focus-visible never fires on mouse clicks,
+   so this costs the pointer experience nothing. */
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Pills and round controls: match the ring to the shape */
+.hero-cta-primary:focus-visible,
+.hero-cta-ghost:focus-visible,
+.nav-cta:focus-visible,
+.btn-text:focus-visible,
+.proj-link-btn:focus-visible,
+.proj-hero-view-btn:focus-visible,
+.hvc-tags span:focus-visible {
+  outline-offset: 4px;
+  border-radius: 100px;
+}
+
+.theme-toggle:focus-visible,
+.project-link-arrow:focus-visible {
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+/* Text links sit tight to their glyphs; pull the ring in a little */
+.hero-social a:focus-visible,
+footer a:focus-visible,
+.nav-logo:focus-visible {
+  outline-offset: 2px;
+}
+
+/* A card's arrow is the real link — make focus read on the whole card */
+.project-card:has(.project-link-arrow:focus-visible) {
+  border-color: var(--border-hover);
+}
+
+/* ── Skip link — first tab stop, jumps past the hero to the work ──
+   Clipped to 1px rather than moved with a transform: it stays focusable
+   (unlike display:none / visibility:hidden) and there is no transition to
+   animate, so nothing can strand it off-screen mid-tween. */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+/* :focus, not :focus-visible — a skip link is only ever reachable by
+   keyboard, and the focus-visible heuristic can decline to match. */
+.skip-link:focus {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  z-index: 100000;
+  padding: 11px 22px;
+  border-radius: 100px;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Mobile: keep a nav action available ──
+   The Work/About/Contact group was removed, and an older rule also hid
+   .nav-cta under 540px — which left the navbar with nothing actionable
+   on phones. Bring the CTA back at every width. */
+@media (max-width: 540px) {
+  .nav-cta {
+    display: inline-flex;
+    padding: 7px 14px;
+    font-size: 9px;
+  }
+}
+@media (max-width: 380px) {
+  .nav-cta { padding: 6px 12px; letter-spacing: 0.08em; }
 }
