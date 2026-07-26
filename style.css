@@ -1,10 +1,25 @@
 /* ─────────────────────────────────────────────
-   Nagasaki — display face for the hero name
+   LEMON MILK — display face for the hero name
+   (free version is caps-only; lowercase ships in the paid Pro cut)
 ───────────────────────────────────────────── */
 @font-face {
-  font-family: 'Nagasaki';
-  src: url('assets/fonts/Nagasaki.ttf') format('truetype');
+  font-family: 'LEMONMILK';
+  src: url('assets/fonts/LEMONMILK-Regular.otf') format('opentype');
   font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'LEMONMILK';
+  src: url('assets/fonts/LEMONMILK-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'LEMONMILK';
+  src: url('assets/fonts/LEMONMILK-Bold.otf') format('opentype');
+  font-weight: 700;
   font-style: normal;
   font-display: block;
 }
@@ -543,7 +558,7 @@ body.cursor-hidden .cursor-ring { opacity: 0; }
 
 /* Mathavan — base sizing; the hero v3 block below owns the final treatment */
 .name-line {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'LEMONMILK';
   font-weight: 400;
   font-size: clamp(60px, 11vw, 160px);
   line-height: 1.05;
@@ -1954,7 +1969,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
   gap: clamp(32px, 5vw, 88px);
   align-items: center;
   width: 100%;
-  padding: clamp(6px, 1.2vh, 22px) 0;
+  padding: clamp(10px, 2vh, 34px) 0;
 }
 
 .hero-left {
@@ -2010,20 +2025,21 @@ footer p { font-size: 12px; color: var(--text-muted); }
   padding-left: 0.35em;
 }
 
-/* ── Mathavan — the showpiece ──
-   Nagasaki: an ultra-condensed heavy display face with true lowercase.
-   Because it is so narrow (width ≈ 2.03 × font-size) it needs positive
-   tracking to stay legible, and it is sized by height rather than by
-   filling the column — filling the width would make it absurdly tall. */
+/* ── MATHAVAN — the showpiece ──
+   LEMON MILK (free cut) has no lowercase, so the name is set in caps by
+   design and the markup carries the capitals directly — no text-transform,
+   and no risk of a missing glyph falling back to another face. */
 .name-wrap { overflow: hidden; padding-bottom: 0.06em; }
 
 .name-line {
-  font-family: 'Nagasaki', 'Instrument Serif', Georgia, serif;
-  font-size: min(14.5vw, 208px);          /* fallback for no container queries */
-  font-size: min(26.5cqw, 208px);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.055em;
+  font-family: 'LEMONMILK';
+  /* LEMON MILK caps are wide: rendered width ≈ 6.23 × font-size.
+     15.2cqw lands the 8 caps at ~95% of the column. */
+  font-size: min(8.2vw, 120px);           /* fallback for no container queries */
+  font-size: min(15.2cqw, 120px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: 0.012em;
   white-space: nowrap;
   display: flex;
   align-items: baseline;
@@ -2203,7 +2219,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
   .hero-social { justify-content: flex-start; }
   .hero-roles { min-width: 13em; }
   /* single column now spans the viewport, so it can take a larger cap */
-  .name-line { font-size: min(28.3cqw, 210px); }
+  .name-line { font-size: min(15.2cqw, 134px); }
 }
 
 @media (max-width: 600px) {
@@ -2213,7 +2229,7 @@ footer p { font-size: 12px; color: var(--text-muted); }
   .hero-firstname { letter-spacing: 0.34em; }
   .hero-rail { font-size: 9px; }
   .hero-rail-count { display: none; }
-  .name-line { font-size: min(28.3cqw, 150px); }
+  .name-line { font-size: min(15.2cqw, 94px); }
 }
 
 @media (max-width: 400px) {
